@@ -5,10 +5,14 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
+import Snack.SnackCollector;
 import Snack.SnackDrive;
+import Snack.SnackLift;
 
 public abstract class SnackOpMode extends OpMode {
     SnackDrive snackDrive = new SnackDrive();
+    SnackLift snackLift = new SnackLift();
+    SnackCollector snackCollector = new SnackCollector();
     public void init(HardwareMap hwmap, Telemetry telemetry) {
         snackDrive.init(hwmap, telemetry);
     }
@@ -32,5 +36,7 @@ public abstract class SnackOpMode extends OpMode {
         snackDrive.mtrBR.setPower(WeightAvg(forward,-strafe,-rotate));
         snackDrive.mtrBL.setPower(WeightAvg(forward,strafe,rotate));
     }
+
+
 
 }

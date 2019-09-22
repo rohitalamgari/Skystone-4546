@@ -11,4 +11,7 @@ public abstract class SnackInterface {
         privateTelemetry = myTelemetry;
         privateTelemetry.update();
     }
+    public double EncodersPerInch(double encoders, double gearReduction, double wheelDiameter){
+       return ((encoders * gearReduction) /(wheelDiameter * Math.PI) );
+    }
 }

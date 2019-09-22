@@ -18,13 +18,15 @@ public class SnackDrive extends SnackInterface {
     public DcMotor mtrBL = null;
     public DcMotor mtrBR = null;
 
+    public DcMotor[] motors = null;
+
     //sensors
     public BNO055IMU gyro;
     Orientation angles;
     Acceleration gravity;
     BNO055IMU.Parameters parameters;
 
-    public DcMotor[] motors = null;
+
 
     public void init(HardwareMap hwmap, Telemetry telemetry){
         super.init(hwmap, telemetry);
@@ -44,6 +46,41 @@ public class SnackDrive extends SnackInterface {
         gyro = hwmap.get(BNO055IMU.class, "imu");
         gyro.initialize(parameters);
     }
+
+    double countsPerInch = EncodersPerInch(560, 0.6, (100/25.4));
+
+    public void resetMode(){
+        for (DcMotor m: motors) m.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+    }
+
+    public void setEncoderMode(){
+        for (DcMotor m : motors) m.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+    }
+
+    public void go(double speed){
+        for (DcMotor m : motors) m.setPower(speed);
+    }
+
+    public void stop(){
+        for (DcMotor m: motors) m.setPower(0);
+    }
+
+    public void setTargetPosition(double inches){
+        double target = inches * countsPerInch;
+        for (DcMotor m : motors) m.setTargetPosition((int) target);
+    }
+
+
+    public void goInches(double inches, double speed){
+        setEncoderMode();
+        setTargetPosition(inches);
+        go(speed);
+        resetMode();
+        stop();
+    }
+
+
+
     public void updateValues(){
         angles = gyro.getAngularOrientation();
     }
@@ -97,7 +134,4 @@ public class SnackDrive extends SnackInterface {
     String formatDegrees(double degrees){
         return String.format(Locale.getDefault(), "%.1f", AngleUnit.DEGREES.normalize(degrees));
     }
-
-
-
 }
