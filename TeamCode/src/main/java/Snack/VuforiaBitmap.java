@@ -129,10 +129,10 @@ public class VuforiaBitmap {
         avgX /= xValues.size();
         avgY /= yValues.size();
 
-        if (avgX < 220) {
+        if (avgX > 300 && avgX < 450) {
             skystonePosition = "1 & 4";
             opMode.telemetry.addData("skystonePosition: ", skystonePosition);
-        } else if (avgX < 430) {
+        } else if (avgX < 300 && avgX > 263) {
             skystonePosition = "2 & 5";
             opMode.telemetry.addData("skystonePosition: ", skystonePosition);
         } else {
