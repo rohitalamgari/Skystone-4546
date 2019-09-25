@@ -4,6 +4,7 @@ import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.robotcore.external.navigation.Acceleration;
@@ -19,6 +20,8 @@ public class SnackDrive extends SnackInterface {
     public DcMotor mtrBR = null;
 
     public DcMotor[] motors = null;
+
+    ElapsedTime times;
 
     //sensors
     public BNO055IMU gyro;
@@ -55,6 +58,60 @@ public class SnackDrive extends SnackInterface {
 
     public void setEncoderMode(){
         for (DcMotor m : motors) m.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+    }
+
+    public void resetEncoders(){
+        for (DcMotor m : motors) m.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+    }
+
+    // encoder method that get avg encoders of all wheels
+    public double getEncoderAvg(){
+        int count = 4;
+        if (mtrFL.getCurrentPosition() == 0){
+            count--;
+        }
+        if (mtrFR.getCurrentPosition() == 0){
+            count--;
+        }
+        if (mtrBL.getCurrentPosition() == 0){
+            count--;
+        }
+        if (mtrBR.getCurrentPosition() == 0){
+            count--;
+        }
+        if (count == 0) count++;
+        return (Math.abs(mtrFL.getCurrentPosition()) +
+                Math.abs(mtrFR.getCurrentPosition()) +
+                Math.abs(mtrBL.getCurrentPosition()) +
+                Math.abs(mtrBR.getCurrentPosition())) / count;
+    }
+
+    // encoder method that get avg encoders of left wheels
+    public double getEncoderL(){
+        int count = 2;
+        if (mtrFL.getCurrentPosition() == 0){
+            count--;
+        }
+        if (mtrBL.getCurrentPosition() == 0){
+            count--;
+        }
+        if (count == 0) count++;
+        return (Math.abs(mtrFL.getCurrentPosition()) +
+                Math.abs(mtrBL.getCurrentPosition())) / count;
+    }
+
+    // encoder method that get avg encoders of right wheels
+    public double getEncoderR(){
+        int count = 2;
+        if (mtrFR.getCurrentPosition() == 0){
+            count--;
+        }
+        if (mtrBR.getCurrentPosition() == 0){
+            count--;
+        }
+        if (count == 0) count++;
+        return (Math.abs(mtrFR.getCurrentPosition()) +
+                Math.abs(mtrBR.getCurrentPosition())) / count;
     }
 
     public void go(double speed){
