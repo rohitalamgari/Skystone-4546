@@ -21,6 +21,9 @@ public class SnackDrive extends SnackInterface {
 
     public DcMotor[] motors = null;
 
+    double countsPerInch = EncodersPerInch(560, 0.6, (100/25.4));
+
+
     ElapsedTime times;
 
     //sensors
@@ -50,7 +53,7 @@ public class SnackDrive extends SnackInterface {
         gyro.initialize(parameters);
     }
 
-    double countsPerInch = EncodersPerInch(560, 0.6, (100/25.4));
+
 
     public void resetMode(){
         for (DcMotor m: motors) m.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
@@ -65,7 +68,7 @@ public class SnackDrive extends SnackInterface {
     }
 
     // encoder method that get avg encoders of all wheels
-    public double getEncoderAvg(){
+    /*public double getEncoderAvg(){
         int count = 4;
         if (mtrFL.getCurrentPosition() == 0){
             count--;
@@ -112,7 +115,7 @@ public class SnackDrive extends SnackInterface {
         if (count == 0) count++;
         return (Math.abs(mtrFR.getCurrentPosition()) +
                 Math.abs(mtrBR.getCurrentPosition())) / count;
-    }
+    }*/
 
     public void go(double speed){
         for (DcMotor m : motors) m.setPower(speed);
@@ -129,6 +132,7 @@ public class SnackDrive extends SnackInterface {
 
 
     public void goInches(double inches, double speed){
+        resetEncoders();
         setEncoderMode();
         setTargetPosition(inches);
         go(speed);
