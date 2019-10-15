@@ -51,6 +51,8 @@ public class SnackDrive extends SnackInterface {
         parameters.accelerationIntegrationAlgorithm = new JustLoggingAccelerationIntegrator();
         gyro = hwmap.get(BNO055IMU.class, "imu");
         gyro.initialize(parameters);
+
+        telemetry.addData("Drivetrain", "Initialized");
     }
 
 
@@ -70,7 +72,7 @@ public class SnackDrive extends SnackInterface {
     // encoder method that get avg encoders of all wheels
     /*public double getEncoderAvg(){
         int count = 4;
-        if (mtrFL.getCurrentPosition() == 0){
+        if (mtrF    L.getCurrentPosition() == 0){
             count--;
         }
         if (mtrFR.getCurrentPosition() == 0){
