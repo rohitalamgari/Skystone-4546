@@ -3,6 +3,7 @@ package Snack;
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
@@ -18,6 +19,7 @@ public class SnackDrive extends SnackInterface {
     public DcMotor mtrFR = null;
     public DcMotor mtrBL = null;
     public DcMotor mtrBR = null;
+
 
     public DcMotor[] motors = null;
 
@@ -41,6 +43,9 @@ public class SnackDrive extends SnackInterface {
         mtrBL = hwmap.dcMotor.get("mtrBL");
         mtrBR = hwmap.dcMotor.get("mtrBR");
         motors = new DcMotor[]{mtrFL, mtrFR, mtrBL, mtrBR};
+
+        mtrFL.setDirection(DcMotorSimple.Direction.REVERSE);
+        mtrBL.setDirection(DcMotorSimple.Direction.REVERSE);
 
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
         parameters.angleUnit = BNO055IMU.AngleUnit.DEGREES;

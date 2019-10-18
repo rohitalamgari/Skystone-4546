@@ -2,7 +2,7 @@ package OmNomNom;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-//@TeleOp (name = "SnackTeleop", group = "4546")
+@TeleOp (name = "SnackTeleop", group = "4546")
 public class SnackTeleOp extends SnackOpMode{
     @Override
     public void init() {
