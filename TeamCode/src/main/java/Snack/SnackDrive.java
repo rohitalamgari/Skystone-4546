@@ -2,6 +2,7 @@ package Snack;
 
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -20,6 +21,7 @@ public class SnackDrive extends SnackInterface {
     public DcMotor mtrBL = null;
     public DcMotor mtrBR = null;
 
+    LinearOpMode opMode;
 
     public DcMotor[] motors = null;
 
@@ -62,22 +64,40 @@ public class SnackDrive extends SnackInterface {
 
 
 
-    public void resetMode(){
-        for (DcMotor m: motors) m.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-    }
+//    public void resetMode(){
+//        for (DcMotor m: motors) m.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+//    }
+//
+//    public void setEncoderMode(){
+//        for (DcMotor m : motors) m.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//    }
+//
+//    public void resetEncoders(){
+//        for (DcMotor m : motors) m.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+//    }
 
-    public void setEncoderMode(){
-        for (DcMotor m : motors) m.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-    }
 
     public void resetEncoders(){
-        for (DcMotor m : motors) m.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        for (DcMotor m : motors){
+            m.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            opMode.idle();
+            m.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+            opMode.idle();
+        }
+    }
+
+    public void go(double speed){
+        for (DcMotor m : motors) m.setPower(speed);
+    }
+
+    public void stop(){
+        for (DcMotor m: motors) m.setPower(0);
     }
 
     // encoder method that get avg encoders of all wheels
-    /*public double getEncoderAvg(){
+    public double getEncoderAvg(){
         int count = 4;
-        if (mtrF    L.getCurrentPosition() == 0){
+        if (mtrFL.getCurrentPosition() == 0){
             count--;
         }
         if (mtrFR.getCurrentPosition() == 0){
@@ -122,31 +142,24 @@ public class SnackDrive extends SnackInterface {
         if (count == 0) count++;
         return (Math.abs(mtrFR.getCurrentPosition()) +
                 Math.abs(mtrBR.getCurrentPosition())) / count;
-    }*/
-
-    public void go(double speed){
-        for (DcMotor m : motors) m.setPower(speed);
     }
 
-    public void stop(){
-        for (DcMotor m: motors) m.setPower(0);
-    }
-
-    public void setTargetPosition(double inches){
-        double target = inches * countsPerInch;
-        for (DcMotor m : motors) m.setTargetPosition((int) target);
-    }
-
-
-    public void goInches(double inches, double speed){
-        resetEncoders();
-        setEncoderMode();
-        setTargetPosition(inches);
-        go(speed);
-        resetMode();
-        stop();
-    }
-
+//
+//    public void setTargetPosition(double inches){
+//        double target = inches * countsPerInch;
+//        for (DcMotor m : motors) m.setTargetPosition((int) target);
+//    }
+//
+//
+//    public void goInches(double inches, double speed){
+//        resetEncoders();
+//        setEncoderMode();
+//        setTargetPosition(inches);
+//        go(speed);
+//        resetMode();
+//        stop();
+//    }
+//
 
 
     public void updateValues(){
