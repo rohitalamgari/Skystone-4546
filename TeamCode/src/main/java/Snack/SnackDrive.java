@@ -21,14 +21,14 @@ public class SnackDrive extends SnackInterface {
     public DcMotor mtrBL = null;
     public DcMotor mtrBR = null;
 
-    LinearOpMode opMode;
+   // LinearOpMode opMode;
 
     public DcMotor[] motors = null;
 
-    double countsPerInch = EncodersPerInch(560, 0.6, (100/25.4));
+    public double countsPerInch = EncodersPerInch(560, 0.6, (100/25.4));
 
 
-    ElapsedTime times;
+//    ElapsedTime time;
 
     //sensors
     public BNO055IMU gyro;
@@ -80,18 +80,30 @@ public class SnackDrive extends SnackInterface {
     public void resetEncoders(){
         for (DcMotor m : motors){
             m.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            opMode.idle();
+       //     opMode.idle();
             m.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-            opMode.idle();
+     //       opMode.idle();
         }
     }
 
     public void go(double speed){
-        for (DcMotor m : motors) m.setPower(speed);
+        mtrBR.setPower(speed);
+        mtrBL.setPower(speed*1.15);
+        mtrFL.setPower(speed*1.15);
+        mtrFR.setPower(speed);
+    }
+    public void startMotors(double lp, double rp){
+        mtrFL.setPower(lp);
+        mtrBL.setPower(lp);
+        mtrFR.setPower(rp);
+        mtrBR.setPower(rp);
     }
 
     public void stop(){
-        for (DcMotor m: motors) m.setPower(0);
+        for (DcMotor m: motors){
+            m.setPower(0);
+            m.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        }
     }
 
     // encoder method that get avg encoders of all wheels
@@ -144,6 +156,47 @@ public class SnackDrive extends SnackInterface {
                 Math.abs(mtrBR.getCurrentPosition())) / count;
     }
 
+    public void moveGyro(double power, double inches, double angle){
+        resetEncoders();
+        if (power > 0){
+            while (getEncoderAvg() < inches * countsPerInch){
+                if (angleDiff(angle) > 1){
+                    startMotors(power, power * 0.8);
+                }
+                else if (angleDiff(angle) < -1){
+                    startMotors(power * 0.8, power);
+                }
+                else{
+                    go(power);
+                }
+                privateTelemetry.addData("angle", gyroYaw());
+                privateTelemetry.addData("angle diff", angleDiff(angle));
+                privateTelemetry.update();
+            }
+        }
+        else{
+            while (getEncoderAvg() < inches * countsPerInch){
+                if (angleDiff(angle) > 1){
+                    startMotors(power * 0.8, power);
+                }
+                else if (angleDiff(angle) < -1){
+                    startMotors(power, power * 0.8);
+                }
+                else{
+                    go(power);
+                }
+                privateTelemetry.addData("angle", gyroYaw());
+                privateTelemetry.addData("angle diff", angleDiff(angle));
+                privateTelemetry.update();
+            }
+        }
+        stop();
+    }
+
+    //public void
+
+
+
 //
 //    public void setTargetPosition(double inches){
 //        double target = inches * countsPerInch;
@@ -160,7 +213,22 @@ public class SnackDrive extends SnackInterface {
 //        stop();
 //    }
 //
-
+    public void turnP(double angle, double p){
+        double kP = p / 50;
+        final double startPos = gyroYaw();
+        double deltaAngle = angleDiff(angle);
+        double changePID = 0;
+        while(Math.abs(deltaAngle) > .5){
+            deltaAngle = angleDiff(angle);
+            changePID = (deltaAngle/(angle - startPos)) * kP;
+            if (changePID < 0){
+                startMotors(changePID - 0.1, - changePID + 0.1);
+            }
+            else{
+                startMotors(changePID + 0.1, -changePID - 0.1);
+            }
+        }
+    }
 
     public void updateValues(){
         angles = gyro.getAngularOrientation();
