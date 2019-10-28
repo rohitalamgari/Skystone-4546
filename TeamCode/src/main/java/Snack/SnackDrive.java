@@ -214,11 +214,11 @@ public class SnackDrive extends SnackInterface {
 //    }
 //
     public void turnP(double angle, double p){
-        double kP = p / 50;
+        double kP = p/5;
         final double startPos = gyroYaw();
         double deltaAngle = angleDiff(angle);
         double changePID = 0;
-        while(Math.abs(deltaAngle) > .5){
+        while(Math.abs(deltaAngle) > 5){
             deltaAngle = angleDiff(angle);
             changePID = (deltaAngle/(angle - startPos)) * kP;
             if (changePID < 0){
@@ -228,6 +228,7 @@ public class SnackDrive extends SnackInterface {
                 startMotors(changePID + 0.1, -changePID - 0.1);
             }
         }
+        stop();
     }
 
     public void updateValues(){

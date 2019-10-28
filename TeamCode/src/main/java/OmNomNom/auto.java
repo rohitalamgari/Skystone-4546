@@ -16,7 +16,7 @@ public class auto extends LinearOpMode {
         waitForStart();
         if(!isStopRequested()){
             //drive.moveGyro(.3, 100, 0);
-            drive.turnP(90, 0.7);
+            drive.turnP(90, 0.5);
             telemetry.addData("mtrFL position", drive.mtrFL.getCurrentPosition());
             telemetry.addData("mtrFR position", drive.mtrFR.getCurrentPosition());
             telemetry.addData("mtrBL position", drive.mtrBL.getCurrentPosition());
