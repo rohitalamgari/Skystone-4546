@@ -16,6 +16,7 @@ import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer.CameraDirection;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer.Parameters;
+import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 
 import java.util.ArrayList;
 import java.util.concurrent.BlockingQueue;
@@ -44,6 +45,7 @@ public class VuforiaBitmap {
 
         params.vuforiaLicenseKey = VUFORIA_KEY;
         params.cameraDirection = CAMERA_CHOICE;
+        params.cameraName = opMode.hardwareMap.get(WebcamName.class, "Webcam 1");
         vuforia = ClassFactory.getInstance().createVuforia(params);
 
         Vuforia.setFrameFormat(PIXEL_FORMAT.RGB565, true);
