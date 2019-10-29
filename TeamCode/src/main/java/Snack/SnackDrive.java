@@ -3,6 +3,7 @@ package Snack;
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -36,6 +37,8 @@ public class SnackDrive extends SnackInterface {
     Acceleration gravity;
     BNO055IMU.Parameters parameters;
 
+    ColorSensor csLine = null;
+
 
 
     public void init(HardwareMap hwmap, Telemetry telemetry){
@@ -58,6 +61,8 @@ public class SnackDrive extends SnackInterface {
         parameters.accelerationIntegrationAlgorithm = new JustLoggingAccelerationIntegrator();
         gyro = hwmap.get(BNO055IMU.class, "imu");
         gyro.initialize(parameters);
+
+        csLine = hwmap.colorSensor.get("csLine");
 
         telemetry.addData("Drivetrain", "Initialized");
     }
@@ -213,20 +218,28 @@ public class SnackDrive extends SnackInterface {
 //        stop();
 //    }
 //
-    public void turnP(double angle, double p){
-        double kP = p/5;
+    public void turn(double angle, double p){
+        double kP = p / 5;
         final double startPos = gyroYaw();
         double deltaAngle = angleDiff(angle);
         double changePID = 0;
-        while(Math.abs(deltaAngle) > 5){
+        while(Math.abs(deltaAngle) > 1){
             deltaAngle = angleDiff(angle);
             changePID = (deltaAngle/(angle - startPos)) * kP;
             if (changePID < 0){
-                startMotors(changePID - 0.1, - changePID + 0.1);
+                startMotors(changePID + 0.15, -changePID - 0.15);
             }
             else{
-                startMotors(changePID + 0.1, -changePID - 0.1);
+                startMotors(-changePID - 0.15, changePID + 0.15);
             }
+            privateTelemetry.addData("Current position", gyroYaw());
+            privateTelemetry.addData("Current Difference",angleDiff(angle));
+            privateTelemetry.addData("changePID", changePID);
+            for(DcMotor m : motors){
+                privateTelemetry.addData("motor", m.getCurrentPosition());
+            }
+
+            privateTelemetry.update();
         }
         stop();
     }
@@ -283,5 +296,12 @@ public class SnackDrive extends SnackInterface {
 
     String formatDegrees(double degrees){
         return String.format(Locale.getDefault(), "%.1f", AngleUnit.DEGREES.normalize(degrees));
+    }
+    public double blueCount(){
+        return csLine.blue();
+    }
+
+    public double redCount(){
+        return csLine.red();
     }
 }

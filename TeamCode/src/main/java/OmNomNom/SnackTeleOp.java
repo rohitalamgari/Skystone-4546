@@ -15,5 +15,7 @@ public class SnackTeleOp extends SnackOpMode{
         telemetry.addData("Is the gyro working", snackDrive.gyro.getAngularOrientation());
         telemetry.addData("Gyro Yaw", snackDrive.gyroYaw());
         telemetry.addData("encoders per inch", snackDrive.countsPerInch);
+        telemetry.addData("color sensor blue count",snackDrive.blueCount());
+        telemetry.addData("color sensor red count",snackDrive.redCount());
     }
 }
