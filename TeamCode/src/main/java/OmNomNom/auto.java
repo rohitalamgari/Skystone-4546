@@ -28,11 +28,11 @@ public class auto extends LinearOpMode {
         drive.moveGyro(0.3,12,0);
     }
     //true is blue
-    public void goAlternatePark(boolean color){
+    public void goAlternatePark(boolean color) throws InterruptedException{
         //while (drive.blueCount() < 200 {
             if (color){
                 drive.moveGyro(0.3, 30, 0);
-                drive.turn(90, 0.5);
+                drive.turn(-90, 0.5);
                 while (drive.blueCount() < 200){
                     drive.go(0.3);
                 }
@@ -40,7 +40,7 @@ public class auto extends LinearOpMode {
             }
             else {
                 drive.moveGyro(0.3, 30, 0);
-                drive.turn(-90, 0.5);
+                drive.turn(90, 0.5);
                 while (drive.redCount() < 250) {
                     drive.go(0.3);
                 }
