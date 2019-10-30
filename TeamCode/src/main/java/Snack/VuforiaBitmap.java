@@ -45,7 +45,7 @@ public class VuforiaBitmap {
 
         params.vuforiaLicenseKey = VUFORIA_KEY;
         params.cameraDirection = CAMERA_CHOICE;
-        params.cameraName = opMode.hardwareMap.get(WebcamName.class, "Webcam 1");
+        //params.cameraName = opMode.hardwareMap.get(WebcamName.class, "Webcam 1");
         vuforia = ClassFactory.getInstance().createVuforia(params);
 
         Vuforia.setFrameFormat(PIXEL_FORMAT.RGB565, true);
@@ -113,7 +113,7 @@ public class VuforiaBitmap {
         ArrayList<Integer> yValues = new ArrayList<>();
 
         for (int y = 0; y < bitmap.getHeight(); y++) {
-            for (int x = 0; x < bitmap.getWidth() / 2; x++) {
+            for (int x = 0; x < bitmap.getWidth(); x++) {
                 int pixel = bitmap.getPixel(x, y);
                 if (red(pixel) <= RED_THRESHOLD && blue(pixel) <= BLUE_THRESHOLD && green(pixel) <= GREEN_THRESHOLD) {
                     xValues.add(x);
