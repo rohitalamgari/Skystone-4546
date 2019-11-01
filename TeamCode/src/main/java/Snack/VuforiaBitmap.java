@@ -19,6 +19,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer.Para
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.concurrent.BlockingQueue;
 
 public class VuforiaBitmap {
@@ -45,7 +46,7 @@ public class VuforiaBitmap {
 
         params.vuforiaLicenseKey = VUFORIA_KEY;
         params.cameraDirection = CAMERA_CHOICE;
-        //params.cameraName = opMode.hardwareMap.get(WebcamName.class, "Webcam 1");
+        params.cameraName = opMode.hardwareMap.get(WebcamName.class, "Webcam 1");
         vuforia = ClassFactory.getInstance().createVuforia(params);
 
         Vuforia.setFrameFormat(PIXEL_FORMAT.RGB565, true);
@@ -103,10 +104,12 @@ public class VuforiaBitmap {
         return bitmap.getWidth();
     }
 
-
-    public double avgX() throws InterruptedException {
+    //True for Blue
+    public double avgX(boolean color) throws InterruptedException {
         double avgX = 0;
         double avgY = 0;
+        double medX = 0;
+        double medY = 0;
         Bitmap bitmap = getBitmap();
         int skystonePixelCount = 0;
         ArrayList<Integer> xValues = new ArrayList<>();
@@ -128,21 +131,46 @@ public class VuforiaBitmap {
         for (int yCoor : yValues) {
             avgY += yCoor;
         }
+        Collections.sort(xValues);
+        Collections.sort(yValues);
+        medX = xValues.get(xValues.size()/2);
+        medY = yValues.get(yValues.size()/2);
         avgX /= xValues.size();
         avgY /= yValues.size();
-
-        if (avgX > 300 && avgX < 450) {
-            skystonePosition = "1 & 4";
-            opMode.telemetry.addData("skystonePosition: ", skystonePosition);
-        } else if (avgX < 300 && avgX > 263) {
-            skystonePosition = "2 & 5";
-            opMode.telemetry.addData("skystonePosition: ", skystonePosition);
-        } else {
-            skystonePosition = "3 & 6";
-            opMode.telemetry.addData("skystonePosition: ", skystonePosition);
+        if (color) {
+            if (medX < 400 && xValues.size() > 10000) {
+                skystonePosition = "1 & 4";
+                opMode.telemetry.addData("skystonePosition: ", skystonePosition);
+                opMode.telemetry.addData("xValues size", xValues.size());
+            } else if (medX < 620 && xValues.size() > 10000) {
+                skystonePosition = "2 & 5";
+                opMode.telemetry.addData("skystonePosition: ", skystonePosition);
+                opMode.telemetry.addData("xvalues size", xValues.size());
+            } else {
+                skystonePosition = "3 & 6";
+                opMode.telemetry.addData("skystonePosition: ", skystonePosition);
+                opMode.telemetry.addData("xvalues size", xValues.size());
+            }
+            opMode.telemetry.update();
+            opMode.sleep(1000);
         }
-        opMode.telemetry.update();
-        opMode.sleep(1000);
-        return avgX;
+        else{
+            if (medX < 230 && xValues.size() > 19000) {
+                skystonePosition = "2 & 5";
+                opMode.telemetry.addData("skystonePosition: ", skystonePosition);
+                opMode.telemetry.addData("xValues size", xValues.size());
+            } else if (medX < 400 && xValues.size() > 19000) {
+                skystonePosition = "1 & 4";
+                opMode.telemetry.addData("skystonePosition: ", skystonePosition);
+                opMode.telemetry.addData("xvalues size", xValues.size());
+            } else {
+                skystonePosition = "3 & 6";
+                opMode.telemetry.addData("skystonePosition: ", skystonePosition);
+                opMode.telemetry.addData("xvalues size", xValues.size());
+            }
+            opMode.telemetry.update();
+            opMode.sleep(1000);
+        }
+        return medX;
     }
 }
