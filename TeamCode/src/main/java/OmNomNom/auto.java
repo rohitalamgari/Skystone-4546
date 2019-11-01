@@ -6,22 +6,43 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 import Snack.SnackDrive;
+import Snack.VuforiaBitmap;
 
 @Autonomous(name = "auto test", group = "4546")
 public class auto extends LinearOpMode {
 
     SnackDrive drive = new SnackDrive();
+    String skystonePos = "not found";
 
     @Override
     public void runOpMode() throws InterruptedException {
+        VuforiaBitmap sample = new VuforiaBitmap(this);
         drive.init(hardwareMap, telemetry);
+        while (!isStarted()){
+            skystonePos = sample.skystonePosition;
+            telemetry.addData("medX: ", sample.medX(false));
+            telemetry.addData("skystonePos", skystonePos);
+            telemetry.update();
+            sleep(1000);
+        }
         waitForStart();
         if(!isStopRequested()){
-            goAlternatePark(true);
-            //drive.turn(90, 0.5);
-            //telemetry.addData("Current position", drive.gyroYaw());
-            //telemetry.addData("Current Difference",drive.angleDiff(90));
-            //telemetry.update();
+            //goAlternatePark(true);
+            if (skystonePos == "1 & 4"){
+                drive.moveGyro(.3,39,0);
+                sleep(500);
+                drive.turn(0,.3);
+            }
+            else if (skystonePos == "2 & 5"){
+                drive.moveGyro(.3,39,0);
+                sleep(500);
+                drive.turn(0,.3);
+            }
+            else{
+                drive.moveGyro(.3,39,0);
+                sleep(500);
+                drive.turn(0,.3);
+            }
         }
     }
     public void goPark(){

@@ -166,10 +166,10 @@ public class SnackDrive extends SnackInterface {
         if (power > 0){
             while (getEncoderAvg() < inches * countsPerInch){
                 if (angleDiff(angle) > 1){
-                    startMotors(power, power * 0.8);
+                    startMotors(power * 0.2, power);
                 }
                 else if (angleDiff(angle) < -1){
-                    startMotors(power * 0.8, power);
+                    startMotors(power, power * 0.2);
                 }
                 else{
                     go(power);

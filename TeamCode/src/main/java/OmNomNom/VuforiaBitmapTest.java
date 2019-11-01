@@ -14,7 +14,7 @@ public class VuforiaBitmapTest extends LinearOpMode {
         VuforiaBitmap sample = new VuforiaBitmap(this);
 
         while (!isStarted()){
-            telemetry.addData("medX: ", sample.avgX(true));
+            telemetry.addData("medX: ", sample.medX(false));
             telemetry.update();
             sleep(1000);
         }
