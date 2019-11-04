@@ -12,10 +12,18 @@ public class SnackTeleOp extends SnackOpMode{
     @Override
     public void loop() {
         driveTrainPower(-gamepad1.left_stick_y, -gamepad1.left_stick_x, gamepad1.right_stick_x/2);
+        if (gamepad1.y){
+            snackDrive.armUp();
+        }
+        if (gamepad1.a){
+            snackDrive.armDown();
+        }
+
         telemetry.addData("Is the gyro working", snackDrive.gyro.getAngularOrientation());
         telemetry.addData("Gyro Yaw", snackDrive.gyroYaw());
         telemetry.addData("encoders per inch", snackDrive.countsPerInch);
         telemetry.addData("color sensor blue count",snackDrive.blueCount());
         telemetry.addData("color sensor red count",snackDrive.redCount());
+
     }
 }

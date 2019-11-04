@@ -152,7 +152,6 @@ public class VuforiaBitmap {
                 opMode.telemetry.addData("xvalues size", xValues.size());
             }
             opMode.telemetry.update();
-            opMode.sleep(1000);
         }
         else{
             if (medX < 195 && xValues.size() > 9000) {
@@ -169,7 +168,6 @@ public class VuforiaBitmap {
                 opMode.telemetry.addData("xvalues size", xValues.size());
             }
             opMode.telemetry.update();
-            opMode.sleep(1000);
         }
         return medX;
     }

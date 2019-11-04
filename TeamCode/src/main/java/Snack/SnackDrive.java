@@ -3,10 +3,12 @@ package Snack;
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
@@ -22,7 +24,11 @@ public class SnackDrive extends SnackInterface {
     public DcMotor mtrBL = null;
     public DcMotor mtrBR = null;
 
+    //public CRServo csrvArm = null;
    // LinearOpMode opMode;
+
+    public Servo srvArm = null;
+    public Servo srvCap = null;
 
     public DcMotor[] motors = null;
 
@@ -63,6 +69,12 @@ public class SnackDrive extends SnackInterface {
         gyro.initialize(parameters);
 
         csLine = hwmap.colorSensor.get("csLine");
+
+        srvArm = hwmap.servo.get("srvArm");
+        srvCap = hwmap.servo.get("srvCap");
+
+        armDown();
+      //  csrvArm = hwmap.crservo.get("csrvArm");
 
         telemetry.addData("Drivetrain", "Initialized");
     }
@@ -304,4 +316,13 @@ public class SnackDrive extends SnackInterface {
     public double redCount(){
         return csLine.red();
     }
+
+    public void armUp(){
+        srvArm.setPosition(0.45);
+    }
+
+    public void armDown(){
+        srvArm.setPosition(0.75);
+    }
+
 }
