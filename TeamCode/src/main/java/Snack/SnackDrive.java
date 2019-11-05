@@ -75,6 +75,7 @@ public class SnackDrive extends SnackInterface {
         srvCap = hwmap.servo.get("srvCap");
 
         armDown();
+        srvCap.setPosition(1);
       //  csrvArm = hwmap.crservo.get("csrvArm");
 
         telemetry.addData("Drivetrain", "Initialized");
@@ -178,10 +179,10 @@ public class SnackDrive extends SnackInterface {
         resetEncoders();
         if (power > 0){
             while (getEncoderAvg() < inches * countsPerInch){
-                if (angleDiff(angle) > 1){
+                if (angleDiff(angle) > 2){
                     startMotors(power * 0.2, power);
                 }
-                else if (angleDiff(angle) < -1){
+                else if (angleDiff(angle) < -2){
                     startMotors(power, power * 0.2);
                 }
                 else{
@@ -194,10 +195,10 @@ public class SnackDrive extends SnackInterface {
         }
         else{
             while (getEncoderAvg() < inches * countsPerInch){
-                if (angleDiff(angle) > 1){
+                if (angleDiff(angle) > 2){
                     startMotors(power * 0.8, power);
                 }
-                else if (angleDiff(angle) < -1){
+                else if (angleDiff(angle) < -2){
                     startMotors(power, power * 0.8);
                 }
                 else{
@@ -319,7 +320,7 @@ public class SnackDrive extends SnackInterface {
     }
 
     public void armUp(){
-        srvArm.setPosition(0.45);
+        srvArm.setPosition(0.425);
     }
 
     public void armDown(){

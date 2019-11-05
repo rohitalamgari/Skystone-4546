@@ -18,6 +18,12 @@ public class SnackTeleOp extends SnackOpMode{
         if (gamepad1.a){
             snackDrive.armDown();
         }
+        if (gamepad1.dpad_up){
+            snackDrive.srvCap.setPosition(0);
+        }
+        if (gamepad1.dpad_down){
+            snackDrive.srvCap.setPosition(1);
+        }
 
         telemetry.addData("Is the gyro working", snackDrive.gyro.getAngularOrientation());
         telemetry.addData("Gyro Yaw", snackDrive.gyroYaw());

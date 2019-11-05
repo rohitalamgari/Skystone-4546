@@ -70,7 +70,7 @@ public class redQuarryAuto extends LinearOpMode {
                 drive.moveGyro(.25,28,0);
                 sleep(100);
                 drive.turn(-90,.35);
-                drive.moveGyro(.25,24,-90);
+                drive.moveGyro(.25,25,-90);
                 sleep(100);
                 drive.turn(0,0.35);
                 drive.moveGyro(.25,11,0);
