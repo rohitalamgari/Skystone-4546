@@ -35,7 +35,7 @@ public class SnackDrive extends SnackInterface {
     public double countsPerInch = EncodersPerInch(560, 0.6, (100/25.4));
 
 
-//    ElapsedTime time;
+    ElapsedTime time = new ElapsedTime();
 
     //sensors
     public BNO055IMU gyro;
@@ -44,6 +44,7 @@ public class SnackDrive extends SnackInterface {
     BNO055IMU.Parameters parameters;
 
     ColorSensor csLine = null;
+
 
 
 
@@ -323,6 +324,26 @@ public class SnackDrive extends SnackInterface {
 
     public void armDown(){
         srvArm.setPosition(0.75);
+    }
+
+    public void strafeRight(double power, int millis){
+        time.reset();
+        while (time.milliseconds() < millis){
+            mtrBL.setPower(-power);
+            mtrFL.setPower(power);
+            mtrFR.setPower(-power);
+            mtrBR.setPower(power);
+        }
+    }
+
+    public void strafeLeft(double power, int millis){
+        time.reset();
+        while (time.milliseconds() < millis){
+            mtrBL.setPower(power);
+            mtrFL.setPower(-power);
+            mtrFR.setPower(power);
+            mtrBR.setPower(-power);
+        }
     }
 
 }
