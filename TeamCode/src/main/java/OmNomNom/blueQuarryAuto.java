@@ -37,7 +37,7 @@ public class blueQuarryAuto extends LinearOpMode {
                 drive.moveGyro(.25, 6, 0);
                 drive.armDown();
                 sleep(100);
-                drive.moveGyro(-.25,10,0);
+                drive.moveGyro(-.25,14,0);
                 sleep(100);
                 drive.turn(-90,.35);
                 drive.moveGyro(.35,70,-90);
