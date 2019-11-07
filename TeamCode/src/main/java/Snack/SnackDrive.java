@@ -320,11 +320,19 @@ public class SnackDrive extends SnackInterface {
     }
 
     public void armUp(){
+<<<<<<< HEAD
         srvArm.setPosition(0.275);
     }
 
     public void armDown(){
         srvArm.setPosition(0.525);
+=======
+        srvArm.setPosition(0.55);
+    }
+
+    public void armDown(){
+        srvArm.setPosition(0.85);
+>>>>>>> 0c4588efb079f3f246ea19f4909679b592d65b44
     }
 
     public void strafeRight(double power, int millis){
