@@ -180,10 +180,10 @@ public class SnackDrive extends SnackInterface {
         if (power > 0){
             while (getEncoderAvg() < inches * countsPerInch){
                 if (angleDiff(angle) > 2){
-                    startMotors(power * 0.2, power);
+                    startMotors(power * 0.7, power);
                 }
                 else if (angleDiff(angle) < -2){
-                    startMotors(power, power * 0.2);
+                    startMotors(power, power * 0.7);
                 }
                 else{
                     go(power);
@@ -196,10 +196,10 @@ public class SnackDrive extends SnackInterface {
         else{
             while (getEncoderAvg() < inches * countsPerInch){
                 if (angleDiff(angle) > 2){
-                    startMotors(power * 0.8, power);
+                    startMotors(power, power*.7);
                 }
                 else if (angleDiff(angle) < -2){
-                    startMotors(power, power * 0.8);
+                    startMotors(power*.7, power);
                 }
                 else{
                     go(power);
@@ -320,11 +320,11 @@ public class SnackDrive extends SnackInterface {
     }
 
     public void armUp(){
-        srvArm.setPosition(0.425);
+        srvArm.setPosition(0.275);
     }
 
     public void armDown(){
-        srvArm.setPosition(0.75);
+        srvArm.setPosition(0.525);
     }
 
     public void strafeRight(double power, int millis){
