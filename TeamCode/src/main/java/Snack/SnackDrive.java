@@ -30,6 +30,9 @@ public class SnackDrive extends SnackInterface {
     public Servo srvArm = null;
     public Servo srvCap = null;
 
+    public Servo srvFoundationL = null;
+    public Servo srvFoundationR = null;
+
     public DcMotor[] motors = null;
 
     public double countsPerInch = EncodersPerInch(560, 0.6, (100/25.4));
@@ -73,9 +76,14 @@ public class SnackDrive extends SnackInterface {
 
         srvArm = hwmap.servo.get("srvArm");
         srvCap = hwmap.servo.get("srvCap");
+        srvFoundationL = hwmap.servo.get("srvFoundationL");
+        srvFoundationR = hwmap.servo.get("srvFoundationR");
+        srvFoundationR.setDirection(Servo.Direction.REVERSE);
+
 
         armDown();
         srvCap.setPosition(1);
+        foundationUp();
       //  csrvArm = hwmap.crservo.get("csrvArm");
 
         telemetry.addData("Drivetrain", "Initialized");
@@ -319,13 +327,19 @@ public class SnackDrive extends SnackInterface {
         return csLine.red();
     }
 
-    public void armUp(){
-
-        srvArm.setPosition(0.25);
-    }
+    public void armUp(){srvArm.setPosition(0.25); }
 
     public void armDown(){
         srvArm.setPosition(0.525);
+    }
+
+    public void foundationUp(){
+        srvFoundationL.setPosition(0);
+        srvFoundationR.setPosition(0.5);
+    }
+    public void foundationDown(){
+        srvFoundationL.setPosition(1);
+        srvFoundationR.setPosition(1);
     }
 
 
