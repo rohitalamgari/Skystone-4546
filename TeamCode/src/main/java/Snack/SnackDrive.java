@@ -78,7 +78,7 @@ public class SnackDrive extends SnackInterface {
         srvCap = hwmap.servo.get("srvCap");
         srvFoundationL = hwmap.servo.get("srvFoundationL");
         srvFoundationR = hwmap.servo.get("srvFoundationR");
-        srvFoundationR.setDirection(Servo.Direction.REVERSE);
+        //srvFoundationL.setDirection(Servo.Direction.REVERSE);
 
 
         armDown();
@@ -88,9 +88,6 @@ public class SnackDrive extends SnackInterface {
 
         telemetry.addData("Drivetrain", "Initialized");
     }
-
-
-
 //    public void resetMode(){
 //        for (DcMotor m: motors) m.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 //    }
@@ -335,11 +332,11 @@ public class SnackDrive extends SnackInterface {
 
     public void foundationUp(){
         srvFoundationL.setPosition(0);
-        srvFoundationR.setPosition(0.5);
+        srvFoundationR.setPosition(1);
     }
     public void foundationDown(){
         srvFoundationL.setPosition(1);
-        srvFoundationR.setPosition(1);
+        srvFoundationR.setPosition(0);
     }
 
 
