@@ -23,7 +23,7 @@ public class redQuarryAuto extends LinearOpMode {
             telemetry.addData("medX: ", sample.medX(false));
             telemetry.addData("skystonePos", skystonePos);
             telemetry.update();
-            sleep(1000);
+            //sleep(1000);
         }
         waitForStart();
         if(!isStopRequested()){

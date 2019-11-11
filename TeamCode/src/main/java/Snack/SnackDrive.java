@@ -82,8 +82,8 @@ public class SnackDrive extends SnackInterface {
 
 
         armDown();
-        srvCap.setPosition(1);
-        foundationUp();
+        //srvCap.setPosition(1);
+        //foundationUp();
       //  csrvArm = hwmap.crservo.get("csrvArm");
 
         telemetry.addData("Drivetrain", "Initialized");
