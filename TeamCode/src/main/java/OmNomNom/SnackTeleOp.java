@@ -19,17 +19,17 @@ public class SnackTeleOp extends SnackOpMode{
             snackDrive.armDown();
         }
         if (gamepad1.dpad_up){
-            snackDrive.srvCap.setPosition(0);
+            //snackDrive.srvCap.setPosition(0);
         }
         if (gamepad1.dpad_down){
-            snackDrive.srvCap.setPosition(1);
+            //snackDrive.srvCap.setPosition(1);
         }
 
         if (gamepad1.right_bumper){
-            snackDrive.foundationDown();
+            //snackDrive.foundationDown();
         }
         if (gamepad1.left_bumper){
-            snackDrive.foundationUp();
+            //snackDrive.foundationUp();
         }
 
         telemetry.addData("Is the gyro working", snackDrive.gyro.getAngularOrientation());
@@ -37,7 +37,7 @@ public class SnackTeleOp extends SnackOpMode{
         telemetry.addData("encoders per inch", snackDrive.countsPerInch);
         telemetry.addData("color sensor blue count",snackDrive.blueCount());
         telemetry.addData("color sensor red count",snackDrive.redCount());
-        telemetry.addData("foundation servo position: ", snackDrive.srvFoundationL.getPosition());
+
 
     }
 }

@@ -28,10 +28,10 @@ public class SnackDrive extends SnackInterface {
    // LinearOpMode opMode;
 
     public Servo srvArm = null;
-    public Servo srvCap = null;
+    //public Servo srvCap = null;
 
-    public Servo srvFoundationL = null;
-    public Servo srvFoundationR = null;
+    //public Servo srvFoundationL = null;
+    //public Servo srvFoundationR = null;
 
     public DcMotor[] motors = null;
 
@@ -75,9 +75,9 @@ public class SnackDrive extends SnackInterface {
         csLine = hwmap.colorSensor.get("csLine");
 
         srvArm = hwmap.servo.get("srvArm");
-        srvCap = hwmap.servo.get("srvCap");
-        srvFoundationL = hwmap.servo.get("srvFoundationL");
-        srvFoundationR = hwmap.servo.get("srvFoundationR");
+        //srvCap = hwmap.servo.get("srvCap");
+        //srvFoundationL = hwmap.servo.get("srvFoundationL");
+        //srvFoundationR = hwmap.servo.get("srvFoundationR");
         //srvFoundationL.setDirection(Servo.Direction.REVERSE);
 
 
@@ -324,12 +324,13 @@ public class SnackDrive extends SnackInterface {
         return csLine.red();
     }
 
-    public void armUp(){srvArm.setPosition(0.25); }
+    public void armUp(){srvArm.setPosition(0.5); }
 
     public void armDown(){
-        srvArm.setPosition(0.525);
+        srvArm.setPosition(0);
     }
 
+    /*
     public void foundationUp(){
         srvFoundationL.setPosition(0);
         srvFoundationR.setPosition(1);
@@ -338,31 +339,31 @@ public class SnackDrive extends SnackInterface {
         srvFoundationL.setPosition(1);
         srvFoundationR.setPosition(0);
     }
-
-
-    public void strafeRight(double powerF, double powerB){
-        mtrBL.setPower(-powerB);
-        mtrFL.setPower(powerF);
-        mtrFR.setPower(-powerF);
-        mtrBR.setPower(powerB);
-    }
+    */
 
     public void strafeLeft(double powerF, double powerB){
         mtrBL.setPower(powerB);
         mtrFL.setPower(-powerF);
+        mtrFR.setPower(-powerF);
+        mtrBR.setPower(powerB);
+    }
+
+    public void strafeRight(double powerF, double powerB){
+        mtrBL.setPower(-powerB);
+        mtrFL.setPower(powerF);
         mtrFR.setPower(powerF);
         mtrBR.setPower(-powerB);
     }
 
-    public void strafeGyro(double power, double heading, double inches){ //positive power is right and negative is left
+    public void strafeGyro(double power, double inches, double heading){ //positive power is right and negative is left
         resetEncoders();
         if (power > 0){
             while (getEncoderAvg() < inches * countsPerInch){
-                if (angleDiff(heading) > .5){
-                    strafeRight(power, power * .4);
+                if (angleDiff(heading) > 2){
+                    strafeRight(power, power * .7);
                 }
-                else if (angleDiff(heading) < -.5){
-                    strafeRight(power * .4, power);
+                else if (angleDiff(heading) < -2){
+                    strafeRight(power * .7, power);
                 }
                 else strafeRight(power, power);
                 privateTelemetry.addData("angle", gyroYaw());
@@ -372,13 +373,13 @@ public class SnackDrive extends SnackInterface {
         }
         else {
             while (getEncoderAvg() < inches * countsPerInch){
-                if (angleDiff(heading) > .5){
-                    strafeLeft(power * .4 , power);
+                if (angleDiff(heading) > 2){
+                    strafeLeft(-power * .7 , -power);
                 }
-                else if (angleDiff(heading) < -.5){
-                    strafeLeft(power, power * .4);
+                else if (angleDiff(heading) < -2){
+                    strafeLeft(-power, -power * .7);
                 }
-                else strafeLeft(power, power);
+                else strafeLeft(-power, -power);
                 privateTelemetry.addData("angle", gyroYaw());
                 privateTelemetry.addData("angle diff", angleDiff(heading));
                 privateTelemetry.update();

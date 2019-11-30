@@ -7,7 +7,7 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 import Snack.SnackDrive;
 
-@Autonomous(name = "park Auto", group = "4546")
+@Autonomous(name = "Park Auto", group = "4546")
 public class blueFoundationAuto extends LinearOpMode{
     SnackDrive drive = new SnackDrive();
 

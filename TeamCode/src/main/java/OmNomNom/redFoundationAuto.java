@@ -24,13 +24,13 @@ public class redFoundationAuto extends LinearOpMode{
             sleep(250);
             drive.moveGyro(-0.3,26,0);
             sleep(1000);
-            drive.foundationDown();
+            //drive.foundationDown();
             sleep(1000);
             drive.moveGyro(0.225,34,0);
             sleep(500);
             drive.turn(90,1);
-            sleep(500);
-            drive.foundationUp();
+            //sleep(500);
+            //drive.foundationUp();
             sleep(250);
             drive.moveGyro(0.3,48,90);
         }
