@@ -59,8 +59,8 @@ public class SnackDrive extends SnackInterface {
         mtrBR = hwmap.dcMotor.get("mtrBR");
         motors = new DcMotor[]{mtrFL, mtrFR, mtrBL, mtrBR};
 
-        mtrFL.setDirection(DcMotorSimple.Direction.REVERSE);
-        mtrBL.setDirection(DcMotorSimple.Direction.REVERSE);
+        mtrFR.setDirection(DcMotorSimple.Direction.REVERSE);
+        mtrBR.setDirection(DcMotorSimple.Direction.REVERSE);
 
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
         parameters.angleUnit = BNO055IMU.AngleUnit.DEGREES;
@@ -340,23 +340,50 @@ public class SnackDrive extends SnackInterface {
     }
 
 
-    public void strafeRight(double power, int millis){
-        time.reset();
-        while (time.milliseconds() < millis){
-            mtrBL.setPower(-power);
-            mtrFL.setPower(power);
-            mtrFR.setPower(-power);
-            mtrBR.setPower(power);
-        }
+    public void strafeRight(double powerF, double powerB){
+        mtrBL.setPower(-powerB);
+        mtrFL.setPower(powerF);
+        mtrFR.setPower(-powerF);
+        mtrBR.setPower(powerB);
     }
 
-    public void strafeLeft(double power, int millis){
-        time.reset();
-        while (time.milliseconds() < millis){
-            mtrBL.setPower(power);
-            mtrFL.setPower(-power);
-            mtrFR.setPower(power);
-            mtrBR.setPower(-power);
+    public void strafeLeft(double powerF, double powerB){
+        mtrBL.setPower(powerB);
+        mtrFL.setPower(-powerF);
+        mtrFR.setPower(powerF);
+        mtrBR.setPower(-powerB);
+    }
+
+    public void strafeGyro(double power, double heading, double inches){ //positive power is right and negative is left
+        resetEncoders();
+        if (power > 0){
+            while (getEncoderAvg() < inches * countsPerInch){
+                if (angleDiff(heading) > .5){
+                    strafeRight(power, power * .4);
+                }
+                else if (angleDiff(heading) < -.5){
+                    strafeRight(power * .4, power);
+                }
+                else strafeRight(power, power);
+                privateTelemetry.addData("angle", gyroYaw());
+                privateTelemetry.addData("angle diff", angleDiff(heading));
+                privateTelemetry.update();
+            }
+        }
+        else {
+            while (getEncoderAvg() < inches * countsPerInch){
+                if (angleDiff(heading) > .5){
+                    strafeLeft(power * .4 , power);
+                }
+                else if (angleDiff(heading) < -.5){
+                    strafeLeft(power, power * .4);
+                }
+                else strafeLeft(power, power);
+                privateTelemetry.addData("angle", gyroYaw());
+                privateTelemetry.addData("angle diff", angleDiff(heading));
+                privateTelemetry.update();
+            }
+
         }
     }
 

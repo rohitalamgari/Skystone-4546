@@ -16,7 +16,7 @@ public class blueFoundationAuto extends LinearOpMode{
         drive.init(hardwareMap, telemetry);
         waitForStart();
         if (!isStopRequested()){
-            drive.moveGyro(0.3,12,0);
+            drive.moveGyro(1,30,180);
         }
 
     }
