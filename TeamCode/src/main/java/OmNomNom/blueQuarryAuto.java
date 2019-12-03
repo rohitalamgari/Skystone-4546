@@ -33,30 +33,36 @@ public class blueQuarryAuto extends LinearOpMode {
                 drive.armUp();
                 drive.moveGyro(.5, 8, 0);
                 sleep(500);
-                drive.strafeGyro(.5, 3, 0);
-                drive.moveGyro(.5, 12, 0);
+                drive.strafeGyro(.5, 1, 0);
+                drive.moveGyro(.5, 23, 0);
                 drive.armDown();
-                drive.moveGyro(-.5, 6, 0);
+                drive.moveGyro(-.5, 8, 0);
                 sleep(500);
-                drive.strafeGyro(-.5, 20, 0);
+                drive.turn(0, .25);
+                drive.strafeGyro(-.5, 48, 0);
+                sleep(500);
+                drive.turn(0, .25);
                 drive.armUp();
-                sleep(500);
-                drive.moveGyro(.5, 5, 0);
-                drive.moveGyro(-.5, 5, 0);
+                sleep(300);
+                drive.moveGyro(.5, 6, 0);
+                drive.moveGyro(-.5, 11, 0);
                 drive.armDown();
                 sleep(500);
+                drive.turn(0, .25);
+                drive.strafeGyro(.5, 11, 0);
+
 
                 //skystone 2
-                drive.strafeGyro(.5, 30, 0);
-                drive.armUp();
-                sleep(500);
-                drive.moveGyro(.5, 6, 0);
-                drive.armDown();
-                drive.moveGyro(-.5, 6, 0);
-                sleep(500);
-                drive.strafeGyro(-.5, 40, 0);
-                drive.armUp();
-                sleep(500);
+//                drive.strafeGyro(.5, 30, 0);
+//                drive.armUp();
+//                sleep(500);
+//                drive.moveGyro(.5, 6, 0);
+//                drive.armDown();
+//                drive.moveGyro(-.5, 6, 0);
+//                sleep(500);
+//                drive.strafeGyro(-.5, 40, 0);
+//                drive.armUp();
+//                sleep(500);
             }
             else if (skystonePos == "2 & 5"){
                 //skystone 1

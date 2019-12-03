@@ -16,9 +16,11 @@ public class auto extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         drive.init(hardwareMap,telemetry);
         waitForStart();
-        if(!isStopRequested())
-        drive.strafeGyro(-.6, 60, 0);
-
+        if(!isStopRequested()) {
+            drive.turn(90, 0.25);
+            sleep(500);
+            drive.turn(0, 0.25);
+        }
     }
 
 
