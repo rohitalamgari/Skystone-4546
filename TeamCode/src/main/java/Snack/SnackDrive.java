@@ -28,7 +28,7 @@ public class SnackDrive extends SnackInterface {
    // LinearOpMode opMode;
 
     public Servo srvArm = null;
-    //public Servo srvCap = null;
+    public Servo srvCap = null;
 
     //public Servo srvFoundationL = null;
     //public Servo srvFoundationR = null;
@@ -75,14 +75,14 @@ public class SnackDrive extends SnackInterface {
         csLine = hwmap.colorSensor.get("csLine");
 
         srvArm = hwmap.servo.get("srvArm");
-        //srvCap = hwmap.servo.get("srvCap");
+        srvCap = hwmap.servo.get("srvCap");
         //srvFoundationL = hwmap.servo.get("srvFoundationL");
         //srvFoundationR = hwmap.servo.get("srvFoundationR");
         //srvFoundationL.setDirection(Servo.Direction.REVERSE);
 
 
         armDown();
-        //srvCap.setPosition(1);
+        capUp();
         //foundationUp();
       //  csrvArm = hwmap.crservo.get("csrvArm");
 
@@ -390,5 +390,9 @@ public class SnackDrive extends SnackInterface {
 
         }
     }
+    public void capUp(){
+        srvCap.setPosition(0.75);
+    }
+    public void capDown(){srvCap.setPosition(0);}
 
 }

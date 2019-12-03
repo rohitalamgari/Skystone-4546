@@ -19,10 +19,10 @@ public class SnackTeleOp extends SnackOpMode{
             snackDrive.armDown();
         }
         if (gamepad1.dpad_up){
-            //snackDrive.srvCap.setPosition(0);
+            snackDrive.capUp();
         }
         if (gamepad1.dpad_down){
-            //snackDrive.srvCap.setPosition(1);
+            snackDrive.capDown();
         }
 
         if (gamepad1.right_bumper){
