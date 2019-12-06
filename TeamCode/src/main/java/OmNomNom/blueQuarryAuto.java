@@ -33,10 +33,11 @@ public class blueQuarryAuto extends LinearOpMode {
                 drive.armUp();
                 drive.moveGyro(.5, 8, 0);
                 sleep(500);
+                drive.turn(0,.25);
                 drive.strafeGyro(.5, 1, 0);
-                drive.moveGyro(.5, 25, 0);
+                drive.moveGyro(.5, 27, 0);
                 drive.armDown();
-                drive.moveGyro(-.5, 10, 0);
+                drive.moveGyro(-.5, 12, 0);
                 sleep(500);
                 drive.turn(0, .25);
                 drive.strafeGyro(-.5, 48, 0);
@@ -71,9 +72,9 @@ public class blueQuarryAuto extends LinearOpMode {
                 sleep(500);
                 drive.turn(0,.25);
                 drive.strafeGyro(.5, 7, 0);
-                drive.moveGyro(.5, 25, 0);
+                drive.moveGyro(.5, 27, 0);
                 drive.armDown();
-                drive.moveGyro(-.5, 10, 0);
+                drive.moveGyro(-.5, 12, 0);
                 sleep(500);
                 drive.turn(0, .25);
                 drive.strafeGyro(-.5, 54, 0);
@@ -95,9 +96,9 @@ public class blueQuarryAuto extends LinearOpMode {
                 drive.moveGyro(.5, 8, 0);
                 sleep(500);
                 drive.strafeGyro(.5, 13, 0);
-                drive.moveGyro(.5, 25, 0);
+                drive.moveGyro(.5, 27, 0);
                 drive.armDown();
-                drive.moveGyro(-.5, 10, 0);
+                drive.moveGyro(-.5, 12, 0);
                 sleep(500);
                 drive.turn(0, .25);
                 drive.strafeGyro(-.5, 60, 0);
