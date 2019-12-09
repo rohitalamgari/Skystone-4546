@@ -17,9 +17,7 @@ public class auto extends LinearOpMode {
         drive.init(hardwareMap,telemetry);
         waitForStart();
         if(!isStopRequested()) {
-            drive.turn(90, 0.25);
-            sleep(500);
-            drive.turn(0, 0.25);
+            drive.armUp();
         }
     }
 

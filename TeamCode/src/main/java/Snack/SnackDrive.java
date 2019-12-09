@@ -238,7 +238,7 @@ public class SnackDrive extends SnackInterface {
 //    }
 //
     public void turn(double angle, double p) throws InterruptedException{
-        double kP = p;
+        double kP = p/2;
         final double startPos = gyroYaw();
         final double angleDiff = angle - startPos;
         double deltaAngle = angleDiff(angle);
