@@ -245,7 +245,7 @@ public class SnackDrive extends SnackInterface {
         double changePID = 0;
         while(Math.abs(deltaAngle) > 1){
             deltaAngle = angleDiff(angle);
-            changePID = (deltaAngle/Math.abs(angleDiff)) * kP;
+            changePID = ((deltaAngle/Math.abs(angleDiff)) * kP);
             if (changePID < 0){
                 startMotors(changePID -.15, -changePID + .15);
             }
@@ -262,6 +262,44 @@ public class SnackDrive extends SnackInterface {
             }
 
             privateTelemetry.update();
+        }
+        stop();
+    }
+
+    public void turnD(double angle, double p, double d) throws InterruptedException{
+        time.reset();
+        double kP = p/2;
+        double kD = d;
+        double currentTime = time.milliseconds();
+        double pastTime = 0;
+        final double startPos = gyroYaw();
+        final double angleDiff = angle - startPos;
+        double prevDeltaAngle = angleDiff(angle);
+        double deltaAngle = prevDeltaAngle;
+        double changePID = 0;
+        while(Math.abs(deltaAngle) > 1){
+            deltaAngle = angleDiff(angle);
+            pastTime = currentTime;
+            currentTime = time.milliseconds();
+            double dT = currentTime - pastTime;
+            changePID = ((deltaAngle/Math.abs(angleDiff)) * kP) + ((deltaAngle - prevDeltaAngle)/(dT)*kD);
+            if (changePID < 0){
+                startMotors(changePID -.15, -changePID + .15);
+            }
+            else{
+                startMotors(changePID + .15, -changePID - .15);
+
+            }
+            privateTelemetry.addData("Current position", gyroYaw());
+            privateTelemetry.addData("Current Difference",deltaAngle);
+            privateTelemetry.addData("changePID", changePID);
+            privateTelemetry.addData("angleDiff: ", angleDiff);
+            for(DcMotor m : motors){
+                privateTelemetry.addData("motor", m.getCurrentPosition());
+            }
+
+            privateTelemetry.update();
+            prevDeltaAngle = deltaAngle;
         }
         stop();
     }
