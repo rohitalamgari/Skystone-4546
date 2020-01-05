@@ -11,7 +11,7 @@ import Snack.SnackLift;
 
 public abstract class SnackOpMode extends OpMode {
     SnackDrive snackDrive = new SnackDrive();
-    //SnackLift snackLift = new SnackLift();
+    SnackLift snackLift = new SnackLift();
     //SnackCollector snackCollector = new SnackCollector();
     public void init(HardwareMap hwmap, Telemetry telemetry) {
         snackDrive.init(hwmap, telemetry);

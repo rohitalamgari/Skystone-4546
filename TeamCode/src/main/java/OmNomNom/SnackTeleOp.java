@@ -8,6 +8,7 @@ public class SnackTeleOp extends SnackOpMode{
     public void init() {
         init(hardwareMap, telemetry);
     }
+    final double armStart = snackLift.mtrArm.getCurrentPosition();
 
     @Override
     public void loop() {
@@ -30,6 +31,12 @@ public class SnackTeleOp extends SnackOpMode{
         }
         if (gamepad1.left_bumper){
             //snackDrive.foundationUp();
+        }
+        if (gamepad2.right_trigger > .1){
+            double newPos = armStart + 175 * gamepad2.right_trigger;
+            double powerVar = (Math.abs(newPos - snackLift.mtrArm.getCurrentPosition())/100);
+            snackLift.armTarget((int)newPos, (-(0.5 * powerVar) - 0.2));
+
         }
 
         telemetry.addData("Is the gyro working", snackDrive.gyro.getAngularOrientation());
