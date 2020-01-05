@@ -15,6 +15,7 @@ public abstract class SnackOpMode extends OpMode {
     //SnackCollector snackCollector = new SnackCollector();
     public void init(HardwareMap hwmap, Telemetry telemetry) {
         snackDrive.init(hwmap, telemetry);
+        snackLift.init(hwmap, telemetry);
     }
 
 

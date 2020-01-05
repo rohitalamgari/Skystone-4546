@@ -16,7 +16,8 @@ public class SnackLift extends SnackInterface {
         // mtrLift2 = hwmap.dcMotor.get("mtrLift2");
         mtrArm = hwmap.dcMotor.get("mtrArm");
         mtrArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        armTarget(0, 0.3);
+        mtrArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        //armTarget(0, 0.3);
     }
 
     public void armTarget(int target, double power){
