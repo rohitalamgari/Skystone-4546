@@ -20,30 +20,31 @@ public class SnackTeleOp extends SnackOpMode{
             snackDrive.armDown();
         }
         if (gamepad1.dpad_up){
-            snackDrive.capUp();
+
         }
         if (gamepad1.dpad_down){
-            snackDrive.capDown();
+
         }
 
         if (gamepad1.right_bumper){
-            //snackDrive.foundationDown();
+
         }
         if (gamepad1.left_bumper){
-            //snackDrive.foundationUp();
+            
         }
-        if (gamepad2.right_trigger > .1){
-            double newPos = armStart + 175 * gamepad2.right_trigger;
-            double powerVar = (Math.abs(newPos - snackLift.mtrArm.getCurrentPosition())/100);
-            snackLift.armTarget((int)newPos, (-(0.5 * powerVar) - 0.2));
+        if (gamepad1.right_trigger > .1){
+            //double newPos = armStart + 175 * gamepad2.right_trigger;
+            //double powerVar = (Math.abs(newPos - snackLift.mtrArm.getCurrentPosition())/100);
+            //snackLift.armTarget((int)newPos, (-(0.5 * powerVar) - 0.2));
+            snackLift.mtrArm.setPower(.1);
 
         }
 
         telemetry.addData("Is the gyro working", snackDrive.gyro.getAngularOrientation());
         telemetry.addData("Gyro Yaw", snackDrive.gyroYaw());
         telemetry.addData("encoders per inch", snackDrive.countsPerInch);
-        telemetry.addData("color sensor blue count",snackDrive.blueCount());
-        telemetry.addData("color sensor red count",snackDrive.redCount());
+        telemetry.addData("encoders for arm", snackLift.mtrArm.getCurrentPosition());
+        telemetry.update();
 
 
     }
