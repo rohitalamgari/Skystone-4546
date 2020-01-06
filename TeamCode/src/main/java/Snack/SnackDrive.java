@@ -355,10 +355,10 @@ public class SnackDrive extends SnackInterface {
         return csLine.red();
     }
 
-    public void armUp(){srvArm.setPosition(0.5); }
+    public void armUp(){srvArm.setPosition(0); }
 
     public void armDown(){
-        srvArm.setPosition(0);
+        srvArm.setPosition(0.5);
     }
 
     /*
