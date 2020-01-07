@@ -26,7 +26,13 @@ public class SnackLift extends SnackInterface {
     public void armTarget(int target, double power){
         mtrArm.setTargetPosition(target);
         while(Math.abs(mtrArm.getCurrentPosition() - target) > 2){
-            mtrArm.setPower(power);
+            if (Math.abs(mtrArm.getCurrentPosition() - target) < (target/2)){
+                mtrArm.setPower(power/2);
+            }
+            else{
+                mtrArm.setPower(power);
+            }
+            privateTelemetry.addData("arm power:", power);
         }
         mtrArm.setPower(0);
     }
@@ -37,5 +43,13 @@ public class SnackLift extends SnackInterface {
 
     public void grabUp(){
         srvClaw.setPosition(1);
+    }
+
+    public void armUp(){
+
+    }
+
+    public void armDown(){
+
     }
 }

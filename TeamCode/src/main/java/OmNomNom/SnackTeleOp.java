@@ -2,6 +2,8 @@ package OmNomNom;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
+import Snack.SnackLift;
+
 @TeleOp (name = "SnackTeleop", group = "4546")
 public class SnackTeleOp extends SnackOpMode{
     @Override
@@ -35,10 +37,10 @@ public class SnackTeleOp extends SnackOpMode{
             snackDrive.armDown();
         }
         if (gamepad2.dpad_up){
-
+            snackLift.armTarget(90, .45);
         }
         if (gamepad2.dpad_down){
-
+            snackLift.armTarget(25, -.45);
         }
 
         if (gamepad2.right_bumper){
@@ -60,11 +62,8 @@ public class SnackTeleOp extends SnackOpMode{
             snackLift.mtrArm.setPower(0);
         }
 
-        telemetry.addData("Is the gyro working", snackDrive.gyro.getAngularOrientation());
         telemetry.addData("Gyro Yaw", snackDrive.gyroYaw());
-        telemetry.addData("encoders per inch", snackDrive.countsPerInch);
         telemetry.addData("encoders for arm", snackLift.mtrArm.getCurrentPosition());
-        telemetry.addData("pos for srv srm", snackDrive.srvArm.getPosition());
         telemetry.update();
 
 
