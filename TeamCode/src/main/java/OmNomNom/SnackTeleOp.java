@@ -34,28 +34,26 @@ public class SnackTeleOp extends SnackOpMode{
         if (gamepad1.a){
             snackDrive.armDown();
         }
-        if (gamepad1.dpad_up){
-            a+=.05;
-            snackDrive.srvArm.setPosition(a);
-        }
-        if (gamepad1.dpad_down){
-            a-=.05;
-            snackDrive.srvArm.setPosition(a);
-        }
-
-        if (gamepad1.right_bumper){
+        if (gamepad2.dpad_up){
 
         }
-        if (gamepad1.left_bumper){
-            
+        if (gamepad2.dpad_down){
+
         }
-        if (gamepad1.right_trigger > .1){
+
+        if (gamepad2.right_bumper){
+            snackLift.grabUp();
+        }
+        if (gamepad2.left_bumper){
+            snackLift.grabDown();
+        }
+        if (gamepad2.right_trigger > .1){
             //double newPos = armStart + 175 * gamepad2.right_trigger;
             //double powerVar = (Math.abs(newPos - snackLift.mtrArm.getCurrentPosition())/100);
             //snackLift.armTarget((int)newPos, (-(0.5 * powerVar) - 0.2));
             snackLift.mtrArm.setPower(-.3);
         }
-        else if (gamepad1.left_trigger > .1){
+        else if (gamepad2.left_trigger > .1){
             snackLift.mtrArm.setPower(.3);
         }
         else{

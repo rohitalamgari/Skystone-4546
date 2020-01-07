@@ -56,8 +56,8 @@ public class SnackDrive extends SnackInterface {
         mtrBR = hwmap.dcMotor.get("mtrBR");
         motors = new DcMotor[]{mtrFL, mtrFR, mtrBL, mtrBR};
 
-        mtrFR.setDirection(DcMotorSimple.Direction.REVERSE);
-        mtrBR.setDirection(DcMotorSimple.Direction.REVERSE);
+        mtrFL.setDirection(DcMotorSimple.Direction.REVERSE);
+        mtrBL.setDirection(DcMotorSimple.Direction.REVERSE);
 
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
         parameters.angleUnit = BNO055IMU.AngleUnit.DEGREES;
@@ -237,10 +237,10 @@ public class SnackDrive extends SnackInterface {
             deltaAngle = angleDiff(angle);
             changePID = ((deltaAngle/Math.abs(angleDiff)) * kP);
             if (changePID < 0){
-                startMotors(changePID -.15, -changePID + .15);
+                startMotors(changePID + .15, -changePID - .15);
             }
             else{
-                startMotors(changePID + .15, -changePID - .15);
+                startMotors(changePID -.15, -changePID + .15);
 
             }
             privateTelemetry.addData("Current position", gyroYaw());

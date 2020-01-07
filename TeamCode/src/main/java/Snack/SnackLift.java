@@ -2,6 +2,7 @@ package Snack;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
@@ -9,6 +10,7 @@ public class SnackLift extends SnackInterface {
     // public DcMotor mtrLift1 = null;
     // public DcMotor mtrLift2 = null;
     public DcMotor mtrArm = null;
+    public Servo srvClaw = null;
 
     public void init(HardwareMap hwmap, Telemetry myTelemetry) {
         super.init(hwmap, myTelemetry);
@@ -17,6 +19,7 @@ public class SnackLift extends SnackInterface {
         mtrArm = hwmap.dcMotor.get("mtrArm");
         mtrArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         mtrArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        srvClaw = hwmap.servo.get("srvClaw");
         //armTarget(0, 0.3);
     }
 
@@ -26,5 +29,13 @@ public class SnackLift extends SnackInterface {
             mtrArm.setPower(power);
         }
         mtrArm.setPower(0);
+    }
+
+    public void grabDown(){
+        srvClaw.setPosition(0);
+    }
+
+    public void grabUp(){
+        srvClaw.setPosition(1);
     }
 }
