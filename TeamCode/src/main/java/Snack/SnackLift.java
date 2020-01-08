@@ -23,6 +23,10 @@ public class SnackLift extends SnackInterface {
         //armTarget(0, 0.3);
     }
 
+    public void resetEncoders(){
+        mtrArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+    }
+
     public void armTarget(int target, double power){
         mtrArm.setTargetPosition(target);
         while(Math.abs(mtrArm.getCurrentPosition() - target) > 2){
@@ -45,11 +49,11 @@ public class SnackLift extends SnackInterface {
         srvClaw.setPosition(1);
     }
 
-    public void armUp(){
-
+    public void armUp(double target){
+        mtrArm.setTargetPosition((int)target);
     }
 
-    public void armDown(){
-
+    public void armDown(double target){
+        mtrArm.setTargetPosition((int)target);
     }
 }

@@ -38,8 +38,8 @@ public abstract class SnackOpMode extends OpMode {
         snackDrive.mtrBL.setPower(WeightAvg(forward,-strafe,-rotate));
         */
         snackDrive.mtrFR.setPower(WeightAvg(forward,-strafe,-rotate));
-        snackDrive.mtrFL.setPower(WeightAvg(forward,-strafe,rotate));
+        snackDrive.mtrFL.setPower(WeightAvg(forward,strafe,rotate));
         snackDrive.mtrBR.setPower(WeightAvg(forward,strafe,-rotate));
-        snackDrive.mtrBL.setPower(WeightAvg(forward,strafe,rotate));
+        snackDrive.mtrBL.setPower(WeightAvg(forward,-strafe,rotate));
     }
 }

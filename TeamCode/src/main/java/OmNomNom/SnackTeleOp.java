@@ -18,10 +18,10 @@ public class SnackTeleOp extends SnackOpMode{
     public void loop() {
 
         if (flip){
-            driveTrainPower(gamepad1.left_stick_y, gamepad1.left_stick_x, -gamepad1.right_stick_x/2);
+            driveTrainPower(gamepad1.left_stick_y, -gamepad1.left_stick_x, -gamepad1.right_stick_x/2);
         }
         else{
-            driveTrainPower(-gamepad1.left_stick_y, -gamepad1.left_stick_x, gamepad1.right_stick_x/2);
+            driveTrainPower(-gamepad1.left_stick_y, gamepad1.left_stick_x, gamepad1.right_stick_x/2);
         }
         if (gamepad1.right_bumper && !flip){
             flip = true;
@@ -53,10 +53,10 @@ public class SnackTeleOp extends SnackOpMode{
             //double newPos = armStart + 175 * gamepad2.right_trigger;
             //double powerVar = (Math.abs(newPos - snackLift.mtrArm.getCurrentPosition())/100);
             //snackLift.armTarget((int)newPos, (-(0.5 * powerVar) - 0.2));
-            snackLift.mtrArm.setPower(-.3);
+            snackLift.mtrArm.setPower(-.9);
         }
         else if (gamepad2.left_trigger > .1){
-            snackLift.mtrArm.setPower(.3);
+            snackLift.mtrArm.setPower(.8);
         }
         else{
             snackLift.mtrArm.setPower(0);
