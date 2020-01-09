@@ -50,13 +50,11 @@ public class SnackTeleOp extends SnackOpMode{
             snackLift.grabDown();
         }
         if (gamepad2.right_trigger > .1){
-            //double newPos = armStart + 175 * gamepad2.right_trigger;
-            //double powerVar = (Math.abs(newPos - snackLift.mtrArm.getCurrentPosition())/100);
-            //snackLift.armTarget((int)newPos, (-(0.5 * powerVar) - 0.2));
-            snackLift.mtrArm.setPower(-.9);
+            snackLift.mtrArm.setTargetPosition(-105);
+            snackLift.mtrArm.setPower(-.5);
         }
         else if (gamepad2.left_trigger > .1){
-            snackLift.mtrArm.setPower(.8);
+            snackLift.mtrArm.setPower(.5);
         }
         else{
             snackLift.mtrArm.setPower(0);
