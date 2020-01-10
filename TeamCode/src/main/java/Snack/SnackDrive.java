@@ -228,19 +228,19 @@ public class SnackDrive extends SnackInterface {
 //    }
 //
     public void turn(double angle, double p) throws InterruptedException{
-        double kP = p/2;
+        double kP = p;
         final double startPos = gyroYaw();
         final double angleDiff = angle - startPos;
         double deltaAngle = angleDiff(angle);
         double changePID = 0;
-        while(Math.abs(deltaAngle) > 1){
+        while(Math.abs(deltaAngle) > .6){
             deltaAngle = angleDiff(angle);
             changePID = ((deltaAngle/Math.abs(angleDiff)) * kP);
             if (changePID < 0){
-                startMotors(changePID + .15, -changePID - .15);
+                startMotors(-changePID + .15 , changePID - .15);
             }
             else{
-                startMotors(changePID -.15, -changePID + .15);
+                startMotors(-changePID - .15, changePID + .15);
 
             }
             privateTelemetry.addData("Current position", gyroYaw());

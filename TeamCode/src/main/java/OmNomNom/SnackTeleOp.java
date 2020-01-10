@@ -21,7 +21,7 @@ public class SnackTeleOp extends SnackOpMode{
             driveTrainPower(gamepad1.left_stick_y, -gamepad1.left_stick_x, -gamepad1.right_stick_x/2);
         }
         else{
-            driveTrainPower(-gamepad1.left_stick_y, gamepad1.left_stick_x, gamepad1.right_stick_x/2);
+            driveTrainPower(-gamepad1.left_stick_y, gamepad1.left_stick_x, -gamepad1.right_stick_x/2);
         }
         if (gamepad1.right_bumper && !flip){
             flip = true;

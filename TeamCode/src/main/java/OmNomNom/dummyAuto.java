@@ -5,15 +5,16 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import Snack.SnackDrive;
 
-@Autonomous(name = "SkyAuto", group = "4546")
+@Autonomous(name = "TestAuto", group = "4546")
 public class dummyAuto extends LinearOpMode {
     SnackDrive drive = new SnackDrive();
     @Override
     public void runOpMode() throws InterruptedException {
         drive.init(hardwareMap, telemetry);
         waitForStart();
-        while(opModeIsActive()){
-            drive.startMotors(0.3,-0.3);
+        if(opModeIsActive()){
+            drive.moveGyro(.3,10,0);
+            drive.turn(90,.3);
         }
     }
 }

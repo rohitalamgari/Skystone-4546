@@ -8,7 +8,7 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 import Snack.SnackDrive;
 import Snack.VuforiaBitmap;
 
-@Autonomous(name = "Test Auto", group = "4546")
+@Autonomous(name = "Test2 Auto", group = "4546")
 public class auto extends LinearOpMode {
 
     SnackDrive drive = new SnackDrive();
