@@ -39,17 +39,18 @@ public class redQuarryAuto extends LinearOpMode {
                 sleep(250);
                 drive.turn(180, .3);
                 sleep(250);
-                drive.moveGyro(-.4, 15, 180);
+                drive.moveGyro(-.4, 19, 180);
                 drive.armDown();
                 sleep(100);
-                drive.moveGyro(.4, 6, 180);
+                drive.moveGyro(.4, 9, 180);
                 sleep(250);
-                drive.turn(-90,.3);
+                drive.turn(-90,.35);
                 sleep(250);
-                drive.moveGyro(-.4, 55, -90);
+                drive.moveGyro(-.4, 60, -90);
+                sleep(250);
                 drive.armUp();
-                sleep(100);
-                drive.moveGyro(.4, 10, -90);
+                sleep(250);
+                drive.moveGyro(.4, 19, -90);
                 drive.armDown();
 
             }
@@ -58,37 +59,39 @@ public class redQuarryAuto extends LinearOpMode {
                 sleep(250);
                 drive.turn(180, .3);
                 sleep(250);
-                drive.moveGyro(-.4, 16.5, 180);
+                drive.moveGyro(-.4, 19, 180);
                 drive.armDown();
                 sleep(100);
-                drive.moveGyro(.4, 8, 180);
+                drive.moveGyro(.4, 9, 180);
                 sleep(250);
-                drive.turn(-90,.3);
+                drive.turn(-90,.35);
                 sleep(250);
-                drive.moveGyro(-.4, 65, -90);
+                drive.moveGyro(-.4, 70, -90);
+                sleep(250);
                 drive.armUp();
                 sleep(100);
-                drive.moveGyro(.4, 10, -90);
+                drive.moveGyro(.4, 19, -90);
                 drive.armDown();
 
 
             }
             else{
-                drive.moveGyro(-.4, 20, 90);
+                drive.moveGyro(-.4, 22.5, 90);
                 sleep(250);
                 drive.turn(180, .3);
                 sleep(250);
-                drive.moveGyro(-.4, 16.5, 180);
+                drive.moveGyro(-.4, 19, 180);
                 drive.armDown();
                 sleep(100);
-                drive.moveGyro(.4, 8, 180);
+                drive.moveGyro(.4, 9, 180);
                 sleep(250);
-                drive.turn(-90,.3);
+                drive.turn(-90,.35);
                 sleep(250);
-                drive.moveGyro(-.4, 80, -90);
+                drive.moveGyro(-.4, 85, -90);
+                sleep(250);
                 drive.armUp();
                 sleep(100);
-                drive.moveGyro(.4, 10, -90);
+                drive.moveGyro(.4, 19, -90);
                 drive.armDown();
 
             }
