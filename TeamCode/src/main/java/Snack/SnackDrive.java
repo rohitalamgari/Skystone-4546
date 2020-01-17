@@ -43,7 +43,7 @@ public class SnackDrive extends SnackInterface {
     Acceleration gravity;
     BNO055IMU.Parameters parameters;
 
-    ColorSensor csLine = null;
+
 
 
 
@@ -69,7 +69,7 @@ public class SnackDrive extends SnackInterface {
         gyro = hwmap.get(BNO055IMU.class, "imu");
         gyro.initialize(parameters);
 
-        csLine = hwmap.colorSensor.get("csLine");
+
 
         srvArm = hwmap.servo.get("srvArm");
 
@@ -347,13 +347,7 @@ public class SnackDrive extends SnackInterface {
     String formatDegrees(double degrees){
         return String.format(Locale.getDefault(), "%.1f", AngleUnit.DEGREES.normalize(degrees));
     }
-    public double blueCount(){
-        return csLine.blue();
-    }
 
-    public double redCount(){
-        return csLine.red();
-    }
 
     public void armUp(){srvArm.setPosition(0); }
 

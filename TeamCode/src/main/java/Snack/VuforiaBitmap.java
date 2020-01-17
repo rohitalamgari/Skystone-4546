@@ -141,14 +141,17 @@ public class VuforiaBitmap {
             if (medX < 340 && xValues.size() > 9000) {
                 skystonePosition = "1 & 4";
                 opMode.telemetry.addData("skystonePosition: ", skystonePosition);
+                opMode.telemetry.addData("medX", medX);
                 opMode.telemetry.addData("xValues size", xValues.size());
             } else if (medX < 760 && xValues.size() > 9000) {
                 skystonePosition = "2 & 5";
                 opMode.telemetry.addData("skystonePosition: ", skystonePosition);
+                opMode.telemetry.addData("medX", medX);
                 opMode.telemetry.addData("xvalues size", xValues.size());
             } else {
                 skystonePosition = "3 & 6";
                 opMode.telemetry.addData("skystonePosition: ", skystonePosition);
+                opMode.telemetry.addData("medX", medX);
                 opMode.telemetry.addData("xvalues size", xValues.size());
             }
             opMode.telemetry.update();
@@ -157,14 +160,17 @@ public class VuforiaBitmap {
             if (medX < 190 && xValues.size() > 9000) {
                 skystonePosition = "2 & 5";
                 opMode.telemetry.addData("skystonePosition: ", skystonePosition);
+                opMode.telemetry.addData("medX", medX);
                 opMode.telemetry.addData("xValues size", xValues.size());
             } else if (medX < 400 && xValues.size() > 9000) {
                 skystonePosition = "1 & 4";
                 opMode.telemetry.addData("skystonePosition: ", skystonePosition);
+                opMode.telemetry.addData("medX", medX);
                 opMode.telemetry.addData("xvalues size", xValues.size());
             } else {
                 skystonePosition = "3 & 6";
                 opMode.telemetry.addData("skystonePosition: ", skystonePosition);
+                opMode.telemetry.addData("medX", medX);
                 opMode.telemetry.addData("xvalues size", xValues.size());
             }
             opMode.telemetry.update();

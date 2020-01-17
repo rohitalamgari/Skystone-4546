@@ -37,31 +37,29 @@ public class SnackTeleOp extends SnackOpMode{
             snackDrive.armDown();
         }
         if (gamepad2.dpad_up){
-            snackLift.armTarget(90, .45);
+
         }
         if (gamepad2.dpad_down){
-            snackLift.armTarget(25, -.45);
+
         }
 
         if (gamepad2.right_bumper){
-            snackLift.grabUp();
+
         }
         if (gamepad2.left_bumper){
-            snackLift.grabDown();
+
         }
         if (gamepad2.right_trigger > .1){
-            snackLift.mtrArm.setTargetPosition(-105);
-            snackLift.mtrArm.setPower(-.5);
+
         }
         else if (gamepad2.left_trigger > .1){
-            snackLift.mtrArm.setPower(.5);
+
         }
         else{
-            snackLift.mtrArm.setPower(0);
+
         }
 
-        telemetry.addData("Gyro Yaw", snackDrive.gyroYaw());
-        telemetry.addData("encoders for arm", snackLift.mtrArm.getCurrentPosition());
+
         telemetry.update();
 
 

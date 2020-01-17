@@ -97,33 +97,8 @@ public class redQuarryAuto extends LinearOpMode {
             }
         }
     }
-    public void goPark(boolean color){
-        if (color){
-            while (drive.blueCount() < 200){
-                drive.go(0.3);
-            }
-            stop();
-        }
-        else{
-            while (drive.redCount() < 250) {
-                drive.go(0.3);
-            }
-            stop();
-        }
-    }
-    //true is blue
-    public void goAlternatePark(boolean color) throws InterruptedException{
-        //while (drive.blueCount() < 200 {
-        if (color){
-            drive.moveGyro(0.3, 30, 0);
-            drive.turn(-90, 0.5);
-            goPark(true);
-        }
-        else {
-            drive.moveGyro(0.3, 30, 0);
-            drive.turn(90, 0.5);
-            goPark(false);
-        }
-    }
+
+
+
 
 }
