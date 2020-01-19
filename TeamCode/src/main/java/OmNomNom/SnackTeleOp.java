@@ -44,21 +44,17 @@ public class SnackTeleOp extends SnackOpMode{
         }
 
         if (gamepad2.right_bumper){
-
+            snackLift.grab();
         }
         if (gamepad2.left_bumper){
-
+            snackLift.release();
         }
-        if (gamepad2.right_trigger > .1){
-
-        }
-        else if (gamepad2.left_trigger > .1){
-
+        if (Math.abs(gamepad2.right_stick_y) > .1){
+            snackLift.mtrLift.setPower(gamepad2.right_stick_y);
         }
         else{
-
+            snackLift.stopMotor();
         }
-
 
         telemetry.update();
 
