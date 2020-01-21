@@ -28,6 +28,7 @@ public class SnackDrive extends SnackInterface {
    // LinearOpMode opMode;
 
     public Servo srvArm = null;
+    public Servo srvCap = null;
 
 
     public DcMotor[] motors = null;
@@ -72,9 +73,11 @@ public class SnackDrive extends SnackInterface {
 
 
         srvArm = hwmap.servo.get("srvArm");
+        srvCap = hwmap.servo.get("srvCap");
 
 
         armDown();
+        capInit();
 
         telemetry.addData("Drivetrain", "Initialized");
     }
@@ -98,6 +101,14 @@ public class SnackDrive extends SnackInterface {
             m.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
      //       opMode.idle();
         }
+    }
+
+    public void capInit(){
+        srvCap.setPosition(1);
+    }
+
+    public void capUp(){
+        srvCap.setPosition(.2);
     }
 
     public void go(double speed){
@@ -366,18 +377,39 @@ public class SnackDrive extends SnackInterface {
     }
     */
 
-    public void strafeLeft(double powerF, double powerB){
-        mtrBL.setPower(powerB);
-        mtrFL.setPower(-powerF);
-        mtrFR.setPower(-powerF);
-        mtrBR.setPower(powerB);
-    }
-
     public void strafeRight(double powerF, double powerB){
         mtrBL.setPower(-powerB);
         mtrFL.setPower(powerF);
+        mtrFR.setPower(-powerF);
+        mtrBR.setPower(powerB);
+
+    }
+
+    public void strafeLeft(double powerF, double powerB){
+        mtrBL.setPower(powerB);
+        mtrFL.setPower(-powerF);
         mtrFR.setPower(powerF);
         mtrBR.setPower(-powerB);
+    }
+
+    public void strafeRightInches(double power, double inches){
+        resetEncoders();
+        while (getEncoderAvg() < inches * countsPerInch){
+            mtrBL.setPower(-power);
+            mtrFL.setPower(power);
+            mtrFR.setPower(-power);
+            mtrBR.setPower(power);
+        }
+    }
+
+    public void strafeLeftInches(double power, double inches){
+        resetEncoders();
+        while (getEncoderAvg() < inches * countsPerInch){
+            mtrBL.setPower(power);
+            mtrFL.setPower(-power);
+            mtrFR.setPower(power);
+            mtrBR.setPower(-power);
+        }
     }
 
     public void strafeGyro(double power, double inches, double heading){ //positive power is right and negative is left

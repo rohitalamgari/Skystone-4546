@@ -20,18 +20,20 @@ public class redFoundationAuto extends LinearOpMode{
         if (!isStopRequested()){
             drive.moveGyro(0.3,6,0);
             sleep(250);
-            drive.strafeGyro(.3,5, 0);
+            drive.strafeRightInches(.4, 2.8);
             sleep(250);
             sleep(250);
-            drive.moveGyro(0.3,26,0);
+            drive.moveGyro(0.3,28,0);
+            sleep(100);
+            drive.moveGyro(.2, 3, 0);
             sleep(1000);
             lift.grab();
-            drive.moveGyro(-0.3,32,0);
-            lift.release();
-            drive.strafeGyro(-.3,15, 0);
             sleep(500);
-            drive.moveGyro(.3, 5, 0);
-            lift.grab();
+            drive.moveGyro(-0.3,50,0);
+            lift.release();
+            drive.strafeLeftInches(.4, 22);
+            sleep(500);
+            drive.moveGyro(.3, 8, 0);
             sleep(500);
             drive.strafeGyro(.3,5, 0);
             sleep(250);

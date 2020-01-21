@@ -32,8 +32,8 @@ public class SnackLift extends SnackInterface {
     }
 
     public void release(){
-        srvClaw1.setPosition(.4);
-        srvClaw2.setPosition(.5);
+        srvClaw1.setPosition(.65);
+        srvClaw2.setPosition(.35);
     }
 
     public void clawInit(){

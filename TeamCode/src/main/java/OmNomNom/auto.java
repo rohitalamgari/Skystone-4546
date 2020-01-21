@@ -17,7 +17,7 @@ public class auto extends LinearOpMode {
         drive.init(hardwareMap,telemetry);
         waitForStart();
         if(!isStopRequested()) {
-            drive.armUp();
+            drive.strafeGyro(.4, 10, 0);
         }
     }
 

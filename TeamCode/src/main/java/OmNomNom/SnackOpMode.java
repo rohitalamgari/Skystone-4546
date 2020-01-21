@@ -8,7 +8,6 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 import Snack.SnackCollector;
 import Snack.SnackDrive;
 import Snack.SnackLift;
-
 public abstract class SnackOpMode extends OpMode {
     SnackDrive snackDrive = new SnackDrive();
     SnackLift snackLift = new SnackLift();
