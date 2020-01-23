@@ -6,90 +6,58 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 import Snack.SnackDrive;
+import Snack.SnackLift;
 import Snack.VuforiaBitmap;
 
 @Autonomous(name = "Blue Quarry Auto", group = "4546")
 public class blueQuarryAuto extends LinearOpMode {
 
     SnackDrive drive = new SnackDrive();
+    SnackLift lift = new SnackLift();
     String skystonePos = "not found";
 
     @Override
     public void runOpMode() throws InterruptedException {
         VuforiaBitmap sample = new VuforiaBitmap(this);
         drive.init(hardwareMap, telemetry);
+        lift.init(hardwareMap, telemetry);
         while (!isStarted()){
             skystonePos = sample.skystonePosition;
             telemetry.addData("medX: ", sample.medX(true));
             telemetry.addData("skystonePos", skystonePos);
             telemetry.update();
-            //sleep(1000);
+            sleep(1000);
         }
         waitForStart();
 
-        drive.moveGyro(.4, 10, 0);
-        drive.armUp();
-        sleep(250);
-        drive.turn(-90, .3);
-        drive.moveGyro(.4, 1.25, -90);
+
 
         if(!isStopRequested()){
             //goAlternatePark(true);
             if (skystonePos == "1 & 4"){
+
+                //skystone 1
+
+                drive.strafeLeftInches(.4, 12);
+                lift.release();
+                drive.moveGyro(-.2, 4, 0);
                 sleep(250);
-                drive.turn(-180, .3);
-                sleep(250);
-                drive.moveGyro(-.4, 17.5, 180);
-                drive.armDown();
+                drive.moveGyro(.4, 35, 0);
                 sleep(100);
-                drive.moveGyro(.4, 11, 180);
+                lift.grab();
+                drive.moveGyro(-.4, 10, 0);
                 sleep(250);
-                drive.turn(90,.45);
-                sleep(250);
-                drive.moveGyro(-.4, 55, 90);
-                drive.armUp();
-                sleep(100);
-                drive.moveGyro(.4, 19, 90);
-                drive.armDown();
+                drive.turn(-90, .35);
+                drive.moveGyro(.4, 25, -90);
 
             }
             else if (skystonePos == "2 & 5"){
-                drive.moveGyro(-.4, 7.5, -90);
-                sleep(250);
-                drive.turn(-180, .3);
-                sleep(250);
-                drive.moveGyro(-.4, 17.5, 180);
-                drive.armDown();
-                sleep(100);
-                drive.moveGyro(.4, 13, 180);
-                sleep(250);
-                drive.turn(90,.45);
-                sleep(250);
-                drive.moveGyro(-.4, 70, 90);
-                drive.armUp();
-                sleep(100);
-                drive.moveGyro(.4, 19, 90);
-                drive.armDown();
+
 
 
             }
             else{
-                drive.moveGyro(-.4, 17, -90);
-                sleep(250);
-                drive.turn(-180, .3);
-                sleep(250);
-                drive.moveGyro(-.4, 17.5, 180);
-                drive.armDown();
-                sleep(100);
-                drive.moveGyro(.4, 10, 180);
-                sleep(250);
-                drive.turn(90,.45);
-                sleep(250);
-                drive.moveGyro(-.4, 80, 90);
-                drive.armUp();
-                sleep(100);
-                drive.moveGyro(.4, 19, 90);
-                drive.armDown();
+
 
             }
 

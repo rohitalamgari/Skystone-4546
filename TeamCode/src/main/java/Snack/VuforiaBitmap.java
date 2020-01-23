@@ -115,7 +115,7 @@ public class VuforiaBitmap {
         ArrayList<Integer> xValues = new ArrayList<>();
         ArrayList<Integer> yValues = new ArrayList<>();
 
-        for (int y = 0; y < bitmap.getHeight(); y++) {
+        for (int y = bitmap.getHeight() - 5; y > (bitmap.getHeight() / 2); y--) {
             for (int x = 0; x < bitmap.getWidth(); x++) {
                 int pixel = bitmap.getPixel(x, y);
                 if (red(pixel) <= RED_THRESHOLD && blue(pixel) <= BLUE_THRESHOLD && green(pixel) <= GREEN_THRESHOLD) {
@@ -138,12 +138,12 @@ public class VuforiaBitmap {
         avgX /= xValues.size();
         avgY /= yValues.size();
         if (color) {
-            if (medX < 340 && xValues.size() > 9000) {
+            if (medX < 155) {
                 skystonePosition = "1 & 4";
                 opMode.telemetry.addData("skystonePosition: ", skystonePosition);
                 opMode.telemetry.addData("medX", medX);
                 opMode.telemetry.addData("xValues size", xValues.size());
-            } else if (medX < 760 && xValues.size() > 9000) {
+            } else if (medX < 380) {
                 skystonePosition = "2 & 5";
                 opMode.telemetry.addData("skystonePosition: ", skystonePosition);
                 opMode.telemetry.addData("medX", medX);
@@ -157,13 +157,13 @@ public class VuforiaBitmap {
             opMode.telemetry.update();
         }
         else{
-            if (medX < 190 && xValues.size() > 9000) {
-                skystonePosition = "2 & 5";
+            if (medX > 370) {
+                skystonePosition = "1 & 4";
                 opMode.telemetry.addData("skystonePosition: ", skystonePosition);
                 opMode.telemetry.addData("medX", medX);
                 opMode.telemetry.addData("xValues size", xValues.size());
-            } else if (medX < 400 && xValues.size() > 9000) {
-                skystonePosition = "1 & 4";
+            } else if (medX > 170) {
+                skystonePosition = "2 & 5";
                 opMode.telemetry.addData("skystonePosition: ", skystonePosition);
                 opMode.telemetry.addData("medX", medX);
                 opMode.telemetry.addData("xvalues size", xValues.size());

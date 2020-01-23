@@ -379,16 +379,16 @@ public class SnackDrive extends SnackInterface {
 
     public void strafeRight(double powerF, double powerB){
         mtrBL.setPower(-powerB);
-        mtrFL.setPower(powerF);
-        mtrFR.setPower(-powerF);
+        mtrFL.setPower(powerF * .85);
+        mtrFR.setPower(-powerF * .85);
         mtrBR.setPower(powerB);
 
     }
 
     public void strafeLeft(double powerF, double powerB){
         mtrBL.setPower(powerB);
-        mtrFL.setPower(-powerF);
-        mtrFR.setPower(powerF);
+        mtrFL.setPower(-powerF * .85);
+        mtrFR.setPower(powerF * .85);
         mtrBR.setPower(-powerB);
     }
 
@@ -396,8 +396,8 @@ public class SnackDrive extends SnackInterface {
         resetEncoders();
         while (getEncoderAvg() < inches * countsPerInch){
             mtrBL.setPower(-power);
-            mtrFL.setPower(power);
-            mtrFR.setPower(-power);
+            mtrFL.setPower(power * .85);
+            mtrFR.setPower(-power * .85);
             mtrBR.setPower(power);
         }
     }
@@ -406,8 +406,8 @@ public class SnackDrive extends SnackInterface {
         resetEncoders();
         while (getEncoderAvg() < inches * countsPerInch){
             mtrBL.setPower(power);
-            mtrFL.setPower(-power);
-            mtrFR.setPower(power);
+            mtrFL.setPower(-power * .85);
+            mtrFR.setPower(power * .85);
             mtrBR.setPower(-power);
         }
     }
