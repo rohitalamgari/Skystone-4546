@@ -48,11 +48,11 @@ public class blueQuarryAuto extends LinearOpMode {
                 drive.turn(-90, .35);
                 drive.moveGyro(.4, 52, -90);
                 lift.release();
-                drive.moveGyro(-.6, 10 + 98, -90);
-                sleep(100);
+                drive.moveGyro(-.6, 10 + 102, -90);
+                sleep(500);
 
                 //skystone 2
-                drive.moveGyro(.32,6, -90);
+                drive.moveGyro(.32,7.5, -90);
                 drive.turn(0,.35);
                 sleep(100);
                 drive.moveGyro(.4, 20, 0);
@@ -63,7 +63,7 @@ public class blueQuarryAuto extends LinearOpMode {
                 drive.moveGyro(.4,  10+ 94, -90);
                 lift.release();
                 sleep(100);
-                drive.moveGyro(-.6,10,-90);
+                drive.moveGyro(-.6,13,-90);
 
             }
             else if (skystonePos == "2 & 5"){
@@ -80,10 +80,11 @@ public class blueQuarryAuto extends LinearOpMode {
                 drive.turn(-90, .35);
                 drive.moveGyro(.4, 72, -90);
                 lift.release();
-                drive.moveGyro(-.6, 11 + 94, -90);
+                drive.moveGyro(-.6, 11 + 100, -90);
+                sleep(500);
 
                 //skystone 2
-                drive.moveGyro(.32,1.5, -90);
+                drive.moveGyro(.32,.1, -90);
                 drive.turn(0,.35);
                 sleep(100);
                 drive.moveGyro(.4, 20, 0);
@@ -94,7 +95,7 @@ public class blueQuarryAuto extends LinearOpMode {
                 drive.moveGyro(.4,  10+ 98, -90);
                 lift.release();
                 sleep(100);
-                drive.moveGyro(-.6,10,-90);
+                drive.moveGyro(-.6,12,-90);
 
 
             }
@@ -112,11 +113,12 @@ public class blueQuarryAuto extends LinearOpMode {
                 drive.turn(-90, .35);
                 drive.moveGyro(.4, 82, -90);
                 lift.release();
-                drive.moveGyro(-.6, 11 + 94, -90);
+                drive.moveGyro(-.6, 11 + 102, -90);
 
                 //skystone 2
 //                drive.moveGyro(.32,6, -90);
                 drive.turn(0,.35);
+                drive.strafeRightInches(.3,3.5);
                 sleep(100);
                 drive.moveGyro(.4, 20, 0);
                 lift.grab();
