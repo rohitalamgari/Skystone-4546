@@ -48,14 +48,14 @@ public class blueQuarryAuto extends LinearOpMode {
                 drive.turn(-90, .35);
                 drive.moveGyro(.4, 52, -90);
                 lift.release();
-                drive.moveGyro(-.6, 10 + 90, -90);
+                drive.moveGyro(-.6, 10 + 98, -90);
                 sleep(100);
 
                 //skystone 2
                 drive.moveGyro(.32,6, -90);
                 drive.turn(0,.35);
                 sleep(100);
-                drive.moveGyro(.4, 26, 0);
+                drive.moveGyro(.4, 20, 0);
                 lift.grab();
                 drive.moveGyro(-.4, 14, 0);
                 drive.turn(-90,.35);
@@ -80,18 +80,18 @@ public class blueQuarryAuto extends LinearOpMode {
                 drive.turn(-90, .35);
                 drive.moveGyro(.4, 72, -90);
                 lift.release();
-                drive.moveGyro(-.6, 11 + 90, -90);
+                drive.moveGyro(-.6, 11 + 94, -90);
 
                 //skystone 2
-                drive.moveGyro(.32,3, -90);
+                drive.moveGyro(.32,1.5, -90);
                 drive.turn(0,.35);
                 sleep(100);
-                drive.moveGyro(.4, 26, 0);
+                drive.moveGyro(.4, 20, 0);
                 lift.grab();
                 drive.moveGyro(-.4, 14, 0);
                 drive.turn(-90,.35);
                 sleep(100);
-                drive.moveGyro(.4,  10+ 94, -90);
+                drive.moveGyro(.4,  10+ 98, -90);
                 lift.release();
                 sleep(100);
                 drive.moveGyro(-.6,10,-90);
@@ -112,18 +112,18 @@ public class blueQuarryAuto extends LinearOpMode {
                 drive.turn(-90, .35);
                 drive.moveGyro(.4, 82, -90);
                 lift.release();
-                drive.moveGyro(-.6, 11 + 90, -90);
+                drive.moveGyro(-.6, 11 + 94, -90);
 
                 //skystone 2
 //                drive.moveGyro(.32,6, -90);
                 drive.turn(0,.35);
                 sleep(100);
-                drive.moveGyro(.4, 26, 0);
+                drive.moveGyro(.4, 20, 0);
                 lift.grab();
                 drive.moveGyro(-.4, 14, 0);
                 drive.turn(-90,.35);
                 sleep(100);
-                drive.moveGyro(.4,  10+ 90, -90);
+                drive.moveGyro(.4,  10+ 98, -90);
                 lift.release();
                 sleep(100);
                 drive.moveGyro(-.6,10,-90);
