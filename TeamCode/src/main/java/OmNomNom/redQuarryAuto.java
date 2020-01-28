@@ -6,18 +6,21 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 import Snack.SnackDrive;
+import Snack.SnackLift;
 import Snack.VuforiaBitmap;
 
 @Autonomous(name = "Red Quarry Auto", group = "4546")
 public class redQuarryAuto extends LinearOpMode {
 
     SnackDrive drive = new SnackDrive();
+    SnackLift lift = new SnackLift();
     String skystonePos = "not found";
 
     @Override
     public void runOpMode() throws InterruptedException {
         VuforiaBitmap sample = new VuforiaBitmap(this);
         drive.init(hardwareMap, telemetry);
+        lift.init(hardwareMap, telemetry);
         while (!isStarted()){
             skystonePos = sample.skystonePosition;
             telemetry.addData("medX: ", sample.medX(false));
@@ -27,70 +30,112 @@ public class redQuarryAuto extends LinearOpMode {
         }
         waitForStart();
 
-        drive.moveGyro(.4, 10, 0);
-        drive.armUp();
-        sleep(250);
-        drive.turn(90, .3);
+
 
         if(!isStopRequested()){
             //goAlternatePark(true);
             if (skystonePos == "1 & 4"){
-                drive.moveGyro(-.4, 2.5, 90);
+                //skystone 1
+                lift.release();
+                drive.strafeRightInches(.35, 3.5);
+                sleep(200);
+                drive.moveGyro(.4, 42, 0);
                 sleep(250);
-                drive.turn(180, .3);
-                sleep(250);
-                drive.moveGyro(-.4, 19, 180);
-                drive.armDown();
+                lift.grab();
+                drive.moveGyro(-.4, 14, 0);
                 sleep(100);
-                drive.moveGyro(.4, 9, 180);
+                drive.turn(90, .35);
+                drive.moveGyro(.4, 55, 90);
+                lift.release();
+                drive.moveGyro(-.6, 10 + 105, 90);
+                sleep(500);
+
+                //skystone 2
+                drive.moveGyro(.32,7.5, 90);
+                drive.turn(0,.35);
+                sleep(100);
+                drive.moveGyro(.4, 20, 0);
+                lift.grab();
+                drive.moveGyro(-.4, 14, 0);
+                drive.turn(90,.35);
+                sleep(100);
+                drive.moveGyro(.4,  10+ 97, 90);
+                lift.release();
+                sleep(100);
+                drive.moveGyro(-.6,16,90);
                 sleep(250);
-                drive.turn(-90,.35);
-                sleep(250);
-                drive.moveGyro(-.4, 60, -90);
-                sleep(250);
-                drive.armUp();
-                sleep(250);
-                drive.moveGyro(.4, 19, -90);
-                drive.armDown();
+                drive.strafeLeftInches(.3,5);
 
             }
             else if (skystonePos == "2 & 5"){
-                drive.moveGyro(-.4, 11, 90);
+
+                //skystone 1
+                lift.release();
+                drive.strafeLeftInches(.35, .6);
+                sleep(200);
+                drive.moveGyro(.4, 42, 0);
                 sleep(250);
-                drive.turn(180, .3);
-                sleep(250);
-                drive.moveGyro(-.4, 19, 180);
-                drive.armDown();
+                lift.grab();
+                drive.moveGyro(-.4, 14, 0);
                 sleep(100);
-                drive.moveGyro(.4, 9, 180);
-                sleep(250);
-                drive.turn(-90,.35);
-                sleep(250);
-                drive.moveGyro(-.4, 70, -90);
-                sleep(250);
-                drive.armUp();
+                drive.turn(90, .35);
+                drive.moveGyro(.4, 75, 90);
+                lift.release();
+                drive.moveGyro(-.6, 11 + 103, 90);
+                sleep(500);
+
+                //skystone 2
+                drive.moveGyro(.32,.1, 90);
+                drive.turn(0,.35);
                 sleep(100);
-                drive.moveGyro(.4, 19, -90);
-                drive.armDown();
+                drive.moveGyro(.4, 20, 0);
+                lift.grab();
+                drive.moveGyro(-.4, 14, 0);
+                drive.turn(90,.35);
+                sleep(100);
+                drive.moveGyro(.4,  10+ 101, 90);
+                lift.release();
+                sleep(100);
+                drive.moveGyro(-.6,15,90);
+                sleep(250);
+                drive.strafeLeftInches(.3, 5);
             }
             else{
-                drive.moveGyro(-.4, 22.5, 90);
+
+                //skystone 1
+                lift.release();
+                drive.strafeLeftInches(.35, 8.24);
+                sleep(200);
+                drive.moveGyro(.4, 40, 0);
                 sleep(250);
-                drive.turn(180, .3);
-                sleep(250);
-                drive.moveGyro(-.4, 19, 180);
-                drive.armDown();
+                lift.grab();
+                drive.moveGyro(-.4, 14, 0);
                 sleep(100);
-                drive.moveGyro(.4, 9, 180);
+                drive.turn(90, .35);
+                drive.moveGyro(.4, 88, 90);
+                lift.release();
+                drive.moveGyro(-.6, 11 + 105, 90);
+                sleep(500);
+
+                //skystone 2
+//
+                drive.turn(0,.35);
+                drive.strafeLeftInches(.3,12);
                 sleep(250);
-                drive.turn(-90,.35);
-                sleep(250);
-                drive.moveGyro(-.4, 85, -90);
-                sleep(250);
-                drive.armUp();
+                drive.moveGyro(.4, 20, 0);
+                lift.srvClaw1.setPosition(.9);
+                drive.moveGyro(-.4, 14, 0);
+                sleep(200);
+                drive.turn(90,.15);
                 sleep(100);
-                drive.moveGyro(.4, 19, -90);
-                drive.armDown();
+                drive.strafeRightInches(.3, 2);
+                sleep(200);
+                drive.moveGyro(.4,  10+ 101, 90);
+                lift.release();
+                sleep(100);
+                drive.moveGyro(-.6,13,90);
+                sleep(250);
+                drive.strafeLeftInches(.3, 5);
 
             }
         }
