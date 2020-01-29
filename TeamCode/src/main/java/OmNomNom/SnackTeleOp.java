@@ -44,7 +44,11 @@ public class SnackTeleOp extends SnackOpMode{
             snackDrive.armDown();
         }
 
+        if (gamepad2.dpad_up)
+            snackDrive.foundationUp();
 
+        if (gamepad2.dpad_down)
+            snackDrive.foundationDown();
 
         if (gamepad2.right_bumper){
             snackLift.grab();

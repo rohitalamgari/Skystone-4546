@@ -29,6 +29,9 @@ public class SnackDrive extends SnackInterface {
 
     public Servo srvArm = null;
     public Servo srvCap = null;
+    public Servo srvF1 = null;
+    public Servo srvF2 = null;
+
 
 
     public DcMotor[] motors = null;
@@ -43,11 +46,6 @@ public class SnackDrive extends SnackInterface {
     Orientation angles;
     Acceleration gravity;
     BNO055IMU.Parameters parameters;
-
-
-
-
-
 
     public void init(HardwareMap hwmap, Telemetry telemetry){
         super.init(hwmap, telemetry);
@@ -74,13 +72,18 @@ public class SnackDrive extends SnackInterface {
 
         srvArm = hwmap.servo.get("srvArm");
         srvCap = hwmap.servo.get("srvCap");
+        srvF1 = hwmap.servo.get("srvF1");
+        srvF2 = hwmap.servo.get("srvF2");
 
 
         armDown();
         capInit();
+        foundationUp();
 
         telemetry.addData("Drivetrain", "Initialized");
     }
+
+
 //    public void resetMode(){
 //        for (DcMotor m: motors) m.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 //    }
@@ -110,6 +113,7 @@ public class SnackDrive extends SnackInterface {
     public void capUp(){
         srvCap.setPosition(.2);
     }
+
 
     public void go(double speed){
         mtrBR.setPower(speed);
@@ -443,6 +447,14 @@ public class SnackDrive extends SnackInterface {
             }
 
         }
+    }
+    public void foundationUp() {
+        srvF1.setPosition(0);
+        srvF2.setPosition(0);
+    }
+    public void foundationDown(){
+        srvF1.setPosition(1);
+        srvF2.setPosition(1);
     }
 
 
