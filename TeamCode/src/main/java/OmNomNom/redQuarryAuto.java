@@ -37,7 +37,7 @@ public class redQuarryAuto extends LinearOpMode {
             if (skystonePos == "1 & 4"){
                 //skystone 1
                 lift.release();
-                drive.strafeRightInches(.35, 3.5);
+                drive.strafeRightInches(.35, 7.5);
                 sleep(200);
                 drive.moveGyro(.4, 42, 0);
                 sleep(250);
@@ -45,9 +45,9 @@ public class redQuarryAuto extends LinearOpMode {
                 drive.moveGyro(-.4, 14, 0);
                 sleep(100);
                 drive.turn(90, .35);
-                drive.moveGyro(.4, 55, 90);
+                drive.moveGyro(.4, 59, 90);
                 lift.release();
-                drive.moveGyro(-.6, 10 + 105, 90);
+                drive.moveGyro(-.6, 10 + 109, 90);
                 sleep(500);
 
                 //skystone 2
@@ -59,10 +59,10 @@ public class redQuarryAuto extends LinearOpMode {
                 drive.moveGyro(-.4, 14, 0);
                 drive.turn(90,.35);
                 sleep(100);
-                drive.moveGyro(.4,  10+ 97, 90);
+                drive.moveGyro(.4,  10+ 100, 90);
                 lift.release();
                 sleep(100);
-                drive.moveGyro(-.6,16,90);
+                drive.moveGyro(-.6,19,90);
                 sleep(250);
                 drive.strafeLeftInches(.3,5);
 
@@ -71,7 +71,7 @@ public class redQuarryAuto extends LinearOpMode {
 
                 //skystone 1
                 lift.release();
-                drive.strafeLeftInches(.35, .6);
+                drive.strafeRightInches(.35, .25);
                 sleep(200);
                 drive.moveGyro(.4, 42, 0);
                 sleep(250);
@@ -79,9 +79,9 @@ public class redQuarryAuto extends LinearOpMode {
                 drive.moveGyro(-.4, 14, 0);
                 sleep(100);
                 drive.turn(90, .35);
-                drive.moveGyro(.4, 75, 90);
+                drive.moveGyro(.4, 79, 90);
                 lift.release();
-                drive.moveGyro(-.6, 11 + 103, 90);
+                drive.moveGyro(-.6, 11 + 107, 90);
                 sleep(500);
 
                 //skystone 2
@@ -93,10 +93,10 @@ public class redQuarryAuto extends LinearOpMode {
                 drive.moveGyro(-.4, 14, 0);
                 drive.turn(90,.35);
                 sleep(100);
-                drive.moveGyro(.4,  10+ 101, 90);
+                drive.moveGyro(.4,  10+ 104, 90);
                 lift.release();
                 sleep(100);
-                drive.moveGyro(-.6,15,90);
+                drive.moveGyro(-.6,18,90);
                 sleep(250);
                 drive.strafeLeftInches(.3, 5);
             }
@@ -104,7 +104,7 @@ public class redQuarryAuto extends LinearOpMode {
 
                 //skystone 1
                 lift.release();
-                drive.strafeLeftInches(.35, 8.24);
+                drive.strafeLeftInches(.35, 5);
                 sleep(200);
                 drive.moveGyro(.4, 40, 0);
                 sleep(250);
@@ -112,9 +112,9 @@ public class redQuarryAuto extends LinearOpMode {
                 drive.moveGyro(-.4, 14, 0);
                 sleep(100);
                 drive.turn(90, .35);
-                drive.moveGyro(.4, 88, 90);
+                drive.moveGyro(.4, 91, 90);
                 lift.release();
-                drive.moveGyro(-.6, 11 + 105, 90);
+                drive.moveGyro(-.6, 11 + 110, 90);
                 sleep(500);
 
                 //skystone 2
@@ -123,17 +123,17 @@ public class redQuarryAuto extends LinearOpMode {
                 drive.strafeLeftInches(.3,12);
                 sleep(250);
                 drive.moveGyro(.4, 20, 0);
-                lift.srvClaw1.setPosition(.9);
+                lift.srvClaw1.setPosition(1);
                 drive.moveGyro(-.4, 14, 0);
                 sleep(200);
                 drive.turn(90,.15);
                 sleep(100);
                 drive.strafeRightInches(.3, 2);
                 sleep(200);
-                drive.moveGyro(.4,  10+ 101, 90);
+                drive.moveGyro(.4,  10+ 104, 90);
                 lift.release();
                 sleep(100);
-                drive.moveGyro(-.6,13,90);
+                drive.moveGyro(-.6,16,90);
                 sleep(250);
                 drive.strafeLeftInches(.3, 5);
 

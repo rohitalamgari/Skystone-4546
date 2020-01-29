@@ -18,10 +18,10 @@ public class SnackTeleOp extends SnackOpMode{
     public void loop() {
 
         if (flip){
-            driveTrainPower(gamepad1.left_stick_y, -gamepad1.left_stick_x, -gamepad1.right_stick_x/2);
+            driveTrainPower(gamepad1.left_stick_y, -gamepad1.left_stick_x, -gamepad1.right_stick_x/1.25);
         }
         else{
-            driveTrainPower(-gamepad1.left_stick_y, gamepad1.left_stick_x, -gamepad1.right_stick_x/2);
+            driveTrainPower(-gamepad1.left_stick_y, gamepad1.left_stick_x, -gamepad1.right_stick_x/1.25);
         }
 
         if (gamepad1.right_bumper){
@@ -32,18 +32,18 @@ public class SnackTeleOp extends SnackOpMode{
         }
 
         if (gamepad1.y){
-            snackDrive.armUp();
+            snackLift.release();
         }
         if (gamepad1.a){
+            snackLift.grab();
+        }
+        if (gamepad1.dpad_up){
+            snackDrive.armUp();
+        }
+        if (gamepad1.dpad_down){
             snackDrive.armDown();
         }
 
-        if (gamepad1.dpad_up){
-            snackDrive.capUp();
-        }
-        if (gamepad1.dpad_down){
-            snackDrive.capInit();
-        }
 
 
         if (gamepad2.right_bumper){

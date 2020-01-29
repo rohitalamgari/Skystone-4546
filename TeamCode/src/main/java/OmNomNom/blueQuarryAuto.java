@@ -129,7 +129,7 @@ public class blueQuarryAuto extends LinearOpMode {
                 lift.srvClaw2.setPosition(.1);
                 drive.moveGyro(-.4, 14, 0);
                 sleep(200);
-                drive.turn(-90,.2);
+                drive.turn(-90,.15);
                 sleep(100);
                 drive.strafeLeftInches(.3, 2);
                 sleep(200);
