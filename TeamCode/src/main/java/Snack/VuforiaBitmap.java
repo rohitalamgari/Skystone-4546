@@ -138,12 +138,12 @@ public class VuforiaBitmap {
         avgX /= xValues.size();
         avgY /= yValues.size();
         if (color) {
-            if (medX < 155) {
+            if (medX < 215) {
                 skystonePosition = "1 & 4";
                 opMode.telemetry.addData("skystonePosition: ", skystonePosition);
                 opMode.telemetry.addData("medX", medX);
                 opMode.telemetry.addData("xValues size", xValues.size());
-            } else if (medX < 380) {
+            } else if (medX < 430) {
                 skystonePosition = "2 & 5";
                 opMode.telemetry.addData("skystonePosition: ", skystonePosition);
                 opMode.telemetry.addData("medX", medX);
@@ -157,12 +157,12 @@ public class VuforiaBitmap {
             opMode.telemetry.update();
         }
         else{
-            if (medX > 370) {
+            if (medX > 420) {
                 skystonePosition = "1 & 4";
                 opMode.telemetry.addData("skystonePosition: ", skystonePosition);
                 opMode.telemetry.addData("medX", medX);
                 opMode.telemetry.addData("xValues size", xValues.size());
-            } else if (medX > 170) {
+            } else if (medX > 220) {
                 skystonePosition = "2 & 5";
                 opMode.telemetry.addData("skystonePosition: ", skystonePosition);
                 opMode.telemetry.addData("medX", medX);
