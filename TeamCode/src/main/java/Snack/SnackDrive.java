@@ -58,6 +58,7 @@ public class SnackDrive extends SnackInterface {
         mtrFL.setDirection(DcMotorSimple.Direction.REVERSE);
         mtrBL.setDirection(DcMotorSimple.Direction.REVERSE);
 
+
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
         parameters.angleUnit = BNO055IMU.AngleUnit.DEGREES;
         parameters.accelUnit = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
@@ -74,7 +75,7 @@ public class SnackDrive extends SnackInterface {
         srvCap = hwmap.servo.get("srvCap");
         srvF1 = hwmap.servo.get("srvF1");
         srvF2 = hwmap.servo.get("srvF2");
-
+        srvF1.setDirection(Servo.Direction.REVERSE);
 
         armDown();
         capInit();
@@ -242,6 +243,36 @@ public class SnackDrive extends SnackInterface {
 //        stop();
 //    }
 //
+    public void turnK(double angle, double p){
+        double kP = p;
+        final double startPos = gyroYaw();
+        final double angleDiff = angle - startPos;
+        double deltaAngle = angleDiff(angle);
+        double changePID = 0;
+        while(Math.abs(deltaAngle) > .6){
+            deltaAngle = angleDiff(angle);
+            changePID = ((deltaAngle/Math.abs(angleDiff))* kP);
+            if (changePID < 0){
+                kP *= Math.signum(changePID);
+                startMotors(-kP + .15 , kP - .15);
+            }
+            else{
+                kP *= Math.signum(changePID);
+                startMotors(-kP - .15, kP + .15);
+
+            }
+            privateTelemetry.addData("Current position", gyroYaw());
+            privateTelemetry.addData("Current Difference",deltaAngle);
+            privateTelemetry.addData("changePID", changePID);
+            privateTelemetry.addData("angleDiff: ", angleDiff);
+            for(DcMotor m : motors){
+                privateTelemetry.addData("motor", m.getCurrentPosition());
+            }
+
+            privateTelemetry.update();
+        }
+        stop();
+    }
     public void turn(double angle, double p) throws InterruptedException{
         double kP = p;
         final double startPos = gyroYaw();
@@ -450,11 +481,11 @@ public class SnackDrive extends SnackInterface {
     }
     public void foundationUp() {
         srvF1.setPosition(0);
-        srvF2.setPosition(0);
+        srvF2.setPosition(.15);
     }
     public void foundationDown(){
-        srvF1.setPosition(1);
-        srvF2.setPosition(1);
+        srvF1.setPosition(.77);
+        srvF2.setPosition(.77);
     }
 
 

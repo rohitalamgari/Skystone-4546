@@ -18,31 +18,39 @@ public class redFoundationAuto extends LinearOpMode{
         lift.init(hardwareMap, telemetry);
         waitForStart();
         if (!isStopRequested()){
+            //Moves and strafes towards foundation
             drive.moveGyro(0.3,6,0);
             sleep(250);
-            drive.strafeRightInches(.4, 2.8);
-            sleep(250);
+            drive.strafeRightInches(.4, 8.24);
+            //moves up and grabs it
             sleep(250);
             drive.moveGyro(0.3,28,0);
             sleep(100);
             drive.moveGyro(.2, 5, 0);
-            sleep(1000);
-            lift.grab();
-            sleep(500);
-            drive.moveGyro(-0.3,50,0);
-            lift.release();
-            drive.strafeLeftInches(.4, 22);
-            sleep(500);
-            drive.moveGyro(.3, 8, 0);
-            sleep(500);
-            drive.strafeGyro(.3,5, 0);
+            sleep(300);
+            drive.foundationDown();
+            //comes back and turns
+            sleep(750);
+            drive.moveGyro(-0.3,30,0);
             sleep(250);
-            drive.moveGyro(.3, 3, 0);
+            drive.turnK(45,.45);
             sleep(250);
-            drive.turn(90,.3);
+            drive.moveGyro(-.3, 20, 45);
             sleep(250);
-            drive.moveGyro(-.5, 30, 90);
+            drive.turnK(90, .45);
+            sleep(250);
+            drive.foundationUp();
+            drive.moveGyro(-.3, 2.5, 90);
+            sleep(250);
+            drive.moveGyro(.5, 18, 90);
 
+            sleep(250);
+            //goes and parks
+            drive.strafeRightInches(.3, 8);
+            sleep(250);
+            drive.strafeLeftInches(.3, .5);
+            sleep(100);
+            drive.moveGyro(-.3, 40, 90);
             //drive.foundationDown();
 
         }
