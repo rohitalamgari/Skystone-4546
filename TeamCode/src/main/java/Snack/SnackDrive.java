@@ -27,10 +27,11 @@ public class SnackDrive extends SnackInterface {
     //public CRServo csrvArm = null;
    // LinearOpMode opMode;
 
-    public Servo srvArm = null;
-    public Servo srvCap = null;
+    //public Servo srvArm = null;
     public Servo srvF1 = null;
     public Servo srvF2 = null;
+    public Servo srvG1 = null;
+    public Servo srvG2 = null;
 
 
 
@@ -71,14 +72,16 @@ public class SnackDrive extends SnackInterface {
 
 
 
-        srvArm = hwmap.servo.get("srvArm");
-        srvCap = hwmap.servo.get("srvCap");
+        //srvArm = hwmap.servo.get("srvArm");
         srvF1 = hwmap.servo.get("srvF1");
         srvF2 = hwmap.servo.get("srvF2");
         srvF1.setDirection(Servo.Direction.REVERSE);
 
-        armDown();
-        capInit();
+        //srvG1 = hwmap.servo.get("srvG1");
+        //srvG2 = hwmap.servo.get("srvG2");
+        //srvG2.setDirection(Servo.Direction.REVERSE);
+        //gateRelease();
+
         foundationUp();
 
         telemetry.addData("Drivetrain", "Initialized");
@@ -106,15 +109,6 @@ public class SnackDrive extends SnackInterface {
      //       opMode.idle();
         }
     }
-
-    public void capInit(){
-        srvCap.setPosition(1);
-    }
-
-    public void capUp(){
-        srvCap.setPosition(.2);
-    }
-
 
     public void go(double speed){
         mtrBR.setPower(speed);
@@ -268,7 +262,7 @@ public class SnackDrive extends SnackInterface {
             for(DcMotor m : motors){
                 privateTelemetry.addData("motor", m.getCurrentPosition());
             }
-
+            privateTelemetry.addData("kp: ",kP);
             privateTelemetry.update();
         }
         stop();
@@ -395,12 +389,6 @@ public class SnackDrive extends SnackInterface {
     }
 
 
-    public void armUp(){srvArm.setPosition(.3); }
-
-    public void armDown(){
-        srvArm.setPosition(1);
-    }
-
     /*
     public void foundationUp(){
         srvFoundationL.setPosition(0);
@@ -479,6 +467,16 @@ public class SnackDrive extends SnackInterface {
 
         }
     }
+
+    public void gateGrab(){
+        srvG2.setPosition(.15);
+        srvG1.setPosition(.15);
+    }
+    public void gateRelease(){
+        srvG2.setPosition(0);
+        srvG1.setPosition(0);
+    }
+
     public void foundationUp() {
         srvF1.setPosition(0);
         srvF2.setPosition(.15);

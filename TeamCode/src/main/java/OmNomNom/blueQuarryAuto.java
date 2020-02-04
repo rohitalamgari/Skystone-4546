@@ -34,6 +34,8 @@ public class blueQuarryAuto extends LinearOpMode {
 
         if(!isStopRequested()){
             //goAlternatePark(true);
+            lift.clawInit();
+            sleep(100);
             if (skystonePos == "1 & 4"){
 
                 //skystone 1
