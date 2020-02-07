@@ -38,6 +38,10 @@ public class SnackTeleOp extends SnackOpMode{
         if (gamepad1.a){
             snackLift.grab();
         }
+        if (gamepad1.dpad_up){
+            snackLift.clawInit();
+        }
+
         /*
         if(gamepad1.x)
             snackDrive.gateGrab();

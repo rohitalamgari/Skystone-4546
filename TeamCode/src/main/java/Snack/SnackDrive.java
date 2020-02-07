@@ -24,7 +24,6 @@ public class SnackDrive extends SnackInterface {
     public DcMotor mtrBL = null;
     public DcMotor mtrBR = null;
 
-    //public CRServo csrvArm = null;
    // LinearOpMode opMode;
 
     //public Servo srvArm = null;

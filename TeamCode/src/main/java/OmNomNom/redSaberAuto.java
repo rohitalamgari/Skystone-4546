@@ -22,7 +22,7 @@ public class redSaberAuto extends LinearOpMode {
             //Moves and strafes towards foundation
             drive.moveGyro(0.3,6,0);
             sleep(250);
-            drive.strafeRightInches(.4, 10);
+            drive.strafeRightInches(.4, 14);
             //moves up and grabs it
             sleep(250);
             drive.moveGyro(0.3,28,0);
@@ -32,12 +32,23 @@ public class redSaberAuto extends LinearOpMode {
             drive.foundationDown();
             //comes back and turns
             sleep(750);
-            drive.moveGyro(-0.3,55,0);
+            drive.moveGyro(-0.45,55,0);
             drive.foundationUp();
-            sleep(10000);
-            drive.strafeLeftInches(.5, 30);
-            lift.grab();
-            drive.strafeLeftInches(.5,45);
+            sleep(5000);
+            drive.strafeLeftInches(.5, 40);
+            lift.clawInit();
+            sleep(250);
+            drive.moveGyro(.35, 16, 0);
+            sleep(200);
+            drive.turn(90, .35);
+            sleep(250);
+            drive.moveGyro(.25, 19, 90);
+            sleep(200);
+            drive.strafeRightInches(.35, 9);
+            sleep(200);
+            drive.moveGyro(-.35, 29, 90);
+            sleep(250);
+            drive.strafeRightInches(.35, 10);
 
         }
     }
