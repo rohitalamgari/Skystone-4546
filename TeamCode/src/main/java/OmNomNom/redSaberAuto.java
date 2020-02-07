@@ -15,6 +15,16 @@ public class redSaberAuto extends LinearOpMode {
         drive.init(hardwareMap, telemetry);
         lift.init(hardwareMap, telemetry);
         lift.clawInit();
+
+        boolean push = false;
+
+        while (!isStarted()){
+            if (gamepad1.dpad_up) push = true;
+            else if (gamepad1.dpad_down) push = false;
+            telemetry.addData("push : ", push);
+            telemetry.update();
+        }
+
         waitForStart();
         if (!isStopRequested()){
             lift.release();
@@ -35,21 +45,34 @@ public class redSaberAuto extends LinearOpMode {
             drive.moveGyro(-0.45,55,0);
             drive.foundationUp();
             sleep(5000);
-            drive.strafeLeftInches(.5, 40);
+            drive.strafeLeftInches(.5, 32.5);
             lift.clawInit();
-            sleep(250);
-            drive.moveGyro(.35, 16, 0);
-            sleep(200);
-            drive.turn(90, .35);
-            sleep(250);
-            drive.moveGyro(.25, 19, 90);
-            sleep(200);
-            drive.strafeRightInches(.35, 9);
-            sleep(200);
-            drive.moveGyro(-.35, 29, 90);
-            sleep(250);
-            drive.strafeRightInches(.35, 10);
-
+            sleep(100);
+            if (push){
+                drive.moveGyro(.35, 8.75, 0);
+                sleep(200);
+                drive.turn(90, .35);
+                sleep(250);
+                drive.moveGyroTime(.25, 20, 90, 2500);
+                sleep(200);
+                drive.strafeRightInches(.35, 9);
+                sleep(200);
+                drive.moveGyro(-.35, 35.5, 90);
+                sleep(250);
+                drive.strafeRightInches(.35, 10);
+            }
+            else{
+                sleep(200);
+                drive.moveGyro(.35, 4.75, 0);
+                sleep(300);
+                drive.turn(90, .35);
+                sleep(250);
+                drive.strafeRightInches(.35, 5);
+                sleep(200);
+                drive.moveGyro(-.35, 27.24, 90);
+                sleep(250);
+                drive.strafeRightInches(.35, 5);
+            }
         }
     }
 }

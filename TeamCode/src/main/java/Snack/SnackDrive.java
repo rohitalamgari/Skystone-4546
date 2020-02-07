@@ -216,6 +216,44 @@ public class SnackDrive extends SnackInterface {
         stop();
     }
 
+    public void moveGyroTime(double power, double inches, double angle, int millis){
+        resetEncoders();
+        time.reset();
+        if (power > 0){
+            while (getEncoderAvg() < inches * countsPerInch && time.milliseconds() < millis){
+                if (angleDiff(angle) > 2){
+                    startMotors(power * 0.7, power);
+                }
+                else if (angleDiff(angle) < -2){
+                    startMotors(power, power * 0.7);
+                }
+                else{
+                    go(power);
+                }
+                privateTelemetry.addData("angle", gyroYaw());
+                privateTelemetry.addData("angle diff", angleDiff(angle));
+                privateTelemetry.update();
+            }
+        }
+        else{
+            while (getEncoderAvg() < inches * countsPerInch && time.milliseconds() < millis){
+                if (angleDiff(angle) > 2){
+                    startMotors(power, power*.7);
+                }
+                else if (angleDiff(angle) < -2){
+                    startMotors(power*.7, power);
+                }
+                else{
+                    go(power);
+                }
+                privateTelemetry.addData("angle", gyroYaw());
+                privateTelemetry.addData("angle diff", angleDiff(angle));
+                privateTelemetry.update();
+            }
+        }
+        stop();
+    }
+
     //public void
 
 
