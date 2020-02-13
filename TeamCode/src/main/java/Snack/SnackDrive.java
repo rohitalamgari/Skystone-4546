@@ -76,10 +76,10 @@ public class SnackDrive extends SnackInterface {
         srvF2 = hwmap.servo.get("srvF2");
         srvF1.setDirection(Servo.Direction.REVERSE);
 
-        //srvG1 = hwmap.servo.get("srvG1");
-        //srvG2 = hwmap.servo.get("srvG2");
-        //srvG2.setDirection(Servo.Direction.REVERSE);
-        //gateRelease();
+        srvG1 = hwmap.servo.get("srvG1");
+        srvG2 = hwmap.servo.get("srvG2");
+        srvG2.setDirection(Servo.Direction.REVERSE);
+        gateRelease();
 
         foundationUp();
 
@@ -506,12 +506,12 @@ public class SnackDrive extends SnackInterface {
     }
 
     public void gateGrab(){
-        srvG2.setPosition(.15);
-        srvG1.setPosition(.15);
+        srvG2.setPosition(.3);
+        srvG1.setPosition(0.5);
     }
     public void gateRelease(){
         srvG2.setPosition(0);
-        srvG1.setPosition(0);
+        srvG1.setPosition(.7);
     }
 
     public void foundationUp() {

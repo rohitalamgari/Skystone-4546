@@ -42,12 +42,12 @@ public class SnackTeleOp extends SnackOpMode{
             snackLift.clawInit();
         }
 
-        /*
+
         if(gamepad1.x)
             snackDrive.gateGrab();
         if (gamepad1.b)
             snackDrive.gateRelease();
-        */ 
+
         if (gamepad2.dpad_up)
             snackDrive.foundationUp();
 
