@@ -46,7 +46,7 @@ public class redQuarryAuto extends LinearOpMode {
                 lift.grab();
                 drive.moveGyro(-.4, 14, 0);
                 sleep(100);
-                drive.turn(90, .35);
+                drive.turn(90, .45);
                 drive.moveGyro(.4, 59, 90);
                 lift.release();
                 sleep(100);
@@ -57,12 +57,12 @@ public class redQuarryAuto extends LinearOpMode {
 
                 //skystone 2
                 drive.moveGyro(.32,8.75, 90);
-                drive.turn(0,.35);
+                drive.turn(0,.45);
                 sleep(100);
                 drive.moveGyro(.4, 20, 0);
                 lift.grab();
                 drive.moveGyro(-.4, 14, 0);
-                drive.turn(90,.35);
+                drive.turn(90,.45);
                 sleep(100);
                 drive.moveGyro(.4,  10+ 100, 90);
                 lift.release();
@@ -83,24 +83,24 @@ public class redQuarryAuto extends LinearOpMode {
                 lift.grab();
                 drive.moveGyro(-.4, 14, 0);
                 sleep(100);
-                drive.turn(90, .35);
+                drive.turn(90, .45);
                 drive.moveGyro(.4, 79, 90);
                 lift.release();
                 sleep(100);
-                drive.strafeRightInches(.2, 2);
+                drive.strafeRightInches(.45, 2.5);
                 sleep(100);
                 drive.moveGyro(-.6, 11 + 107, 90);
                 sleep(500);
 
                 //skystone 2
                 drive.moveGyro(.32,.1, 90);
-                drive.turn(0,.35);
+                drive.turn(0,.45);
                 sleep(100);
                 drive.moveGyro(.4, 20, 0);
                 lift.grab();
                 drive.moveGyro(-.4, 14, 0);
                 sleep(100);
-                drive.turn(90,.35);
+                drive.turn(90,.475);
                 sleep(100);
                 drive.strafeRightInches(.4, 3.5);
                 sleep(100);
@@ -122,7 +122,7 @@ public class redQuarryAuto extends LinearOpMode {
                 lift.grab();
                 drive.moveGyro(-.4, 14, 0);
                 sleep(100);
-                drive.turn(90, .35);
+                drive.turn(90, .45);
                 drive.moveGyro(.4, 91, 90);
                 lift.release();
                 sleep(100);
@@ -133,14 +133,14 @@ public class redQuarryAuto extends LinearOpMode {
 
                 //skystone 2
 //
-                drive.turn(0,.35);
+                drive.turn(0,.45);
                 drive.strafeLeftInches(.3,12);
                 sleep(250);
                 drive.moveGyro(.4, 20, 0);
                 lift.srvClaw1.setPosition(1);
                 drive.moveGyro(-.4, 14, 0);
                 sleep(200);
-                drive.turn(90,.15);
+                drive.turn(90,.45);
                 sleep(100);
                 drive.strafeRightInches(.35, 5.24);
                 sleep(200);
