@@ -21,6 +21,8 @@ public class blueQuarryAuto extends LinearOpMode {
         VuforiaBitmap sample = new VuforiaBitmap(this);
         drive.init(hardwareMap, telemetry);
         lift.init(hardwareMap, telemetry);
+        drive.gateRelease();
+
         while (!isStarted()){
             skystonePos = sample.skystonePosition;
             telemetry.addData("medX: ", sample.medX(true));
@@ -132,7 +134,7 @@ public class blueQuarryAuto extends LinearOpMode {
                 sleep(200);
                 drive.turn(-90,.45);
                 sleep(100);
-                drive.strafeLeftInches(.3, 2);
+                drive.strafeLeftInches(.3, .75);
                 sleep(200);
                 drive.moveGyro(.4,  10+ 101, -90);
                 lift.release();

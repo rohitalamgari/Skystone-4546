@@ -15,6 +15,7 @@ public class redSaberAuto extends LinearOpMode {
         drive.init(hardwareMap, telemetry);
         lift.init(hardwareMap, telemetry);
         lift.clawInit();
+        drive.gateRelease();
 
         boolean push = false;
 
@@ -27,24 +28,24 @@ public class redSaberAuto extends LinearOpMode {
 
         waitForStart();
         if (!isStopRequested()){
-            lift.release();
+            lift.clawInit();
             sleep(100);
             //Moves and strafes towards foundation
-            drive.moveGyro(0.3,6,0);
+            drive.moveGyro(0.45,6,0);
             sleep(250);
             drive.strafeRightInches(.4, 14);
             //moves up and grabs it
             sleep(250);
-            drive.moveGyro(0.3,28,0);
+            drive.moveGyro(0.45,28,0);
             sleep(100);
             drive.moveGyro(.3, 5, 0);
             sleep(300);
             drive.foundationDown();
             //comes back and turns
             sleep(750);
-            drive.moveGyro(-0.45,55,0);
+            drive.moveGyro(-0.55,55,0);
             drive.foundationUp();
-            sleep(5000);
+            sleep(15000);
             drive.strafeLeftInches(.5, 32.5);
             lift.clawInit();
             sleep(100);

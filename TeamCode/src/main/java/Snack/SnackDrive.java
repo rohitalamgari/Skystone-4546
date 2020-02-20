@@ -505,11 +505,11 @@ public class SnackDrive extends SnackInterface {
     }
 
     public void gateGrab(){
-        srvG2.setPosition(.4);
+        srvG2.setPosition(.1);
         srvG1.setPosition(0.65);
     }
     public void gateRelease(){
-        srvG2.setPosition(0);
+        srvG2.setPosition(0.025);
         srvG1.setPosition(.735);
     }
 
