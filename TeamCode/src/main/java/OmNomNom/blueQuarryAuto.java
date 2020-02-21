@@ -42,12 +42,12 @@ public class blueQuarryAuto extends LinearOpMode {
 
                 //skystone 1
                 lift.release();
-                drive.strafeLeftInches(.35, 4.24);
+                drive.strafeLeftInches(.375, 5.5);
                 sleep(200);
                 drive.moveGyro(.4, 41, 0);
                 sleep(250);
                 lift.grab();
-                drive.moveGyro(-.4, 13, 0);
+                drive.moveGyro(-.4, 17, 0);
                 sleep(100);
                 drive.turn(-90, .45);
                 drive.moveGyro(.4, 58, -90);
