@@ -64,7 +64,8 @@ public class redQuarryAuto extends LinearOpMode {
                 drive.turn(0,.45);
                 sleep(100);
                 drive.moveGyro(.4, 20, 0);
-                lift.grab();
+                lift.srvClaw1.setPosition(1);
+                sleep(200);
                 drive.moveGyro(-.4, 14, 0);
                 sleep(150);
                 drive.turn(90,.45);
