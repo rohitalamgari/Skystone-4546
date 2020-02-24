@@ -38,12 +38,12 @@ public class blueSaberAuto extends LinearOpMode {
             sleep(250);
             drive.moveGyro(0.45,28,0);
             sleep(100);
-            drive.moveGyro(.3, 5, 0);
+            drive.moveGyro(.3, 3.6, 0);
             sleep(300);
             drive.foundationDown();
             //comes back and turns
             sleep(750);
-            drive.moveGyro(-0.55,55,0);
+            drive.moveGyro(-0.55,58,0);
             drive.foundationUp();
             sleep(15000);
             drive.strafeRightInches(.5, 32.5);
