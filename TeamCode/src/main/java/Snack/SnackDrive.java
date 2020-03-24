@@ -85,7 +85,6 @@ public class SnackDrive extends SnackInterface {
         telemetry.addData("Drivetrain", "Initialized");
     }
 
-
 //    public void resetMode(){
 //        for (DcMotor m: motors) m.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 //    }
@@ -97,7 +96,6 @@ public class SnackDrive extends SnackInterface {
 //    public void resetEncoders(){
 //        for (DcMotor m : motors) m.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 //    }
-
 
     public void resetEncoders(){
         for (DcMotor m : motors){
@@ -114,6 +112,7 @@ public class SnackDrive extends SnackInterface {
         mtrFL.setPower(speed*1.15);
         mtrFR.setPower(speed);
     }
+
     public void startMotors(double lp, double rp){
         mtrFL.setPower(lp);
         mtrBL.setPower(lp);
@@ -253,10 +252,6 @@ public class SnackDrive extends SnackInterface {
         stop();
     }
 
-    //public void
-
-
-
 //
 //    public void setTargetPosition(double inches){
 //        double target = inches * countsPerInch;
@@ -273,6 +268,7 @@ public class SnackDrive extends SnackInterface {
 //        stop();
 //    }
 //
+
     public void turnK(double angle, double p){
         double kP = p;
         final double startPos = gyroYaw();
@@ -424,7 +420,6 @@ public class SnackDrive extends SnackInterface {
         return String.format(Locale.getDefault(), "%.1f", AngleUnit.DEGREES.normalize(degrees));
     }
 
-
     /*
     public void foundationUp(){
         srvFoundationL.setPosition(0);
@@ -521,6 +516,4 @@ public class SnackDrive extends SnackInterface {
         srvF1.setPosition(.77);
         srvF2.setPosition(.77);
     }
-
-
 }
