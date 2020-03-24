@@ -21,6 +21,8 @@ public class redQuarryAuto extends LinearOpMode {
         VuforiaBitmap sample = new VuforiaBitmap(this);
         drive.init(hardwareMap, telemetry);
         lift.init(hardwareMap, telemetry);
+        drive.gateRelease();
+
         while (!isStarted()){
             skystonePos = sample.skystonePosition;
             telemetry.addData("medX: ", sample.medX(false));
@@ -39,31 +41,37 @@ public class redQuarryAuto extends LinearOpMode {
             if (skystonePos == "1 & 4"){
                 //skystone 1
                 lift.release();
-                drive.strafeRightInches(.35, 9);
+                drive.strafeRightInches(.35, 10.5);
                 sleep(200);
                 drive.moveGyro(.4, 42, 0);
                 sleep(250);
                 lift.grab();
-                drive.moveGyro(-.4, 14, 0);
+                drive.moveGyro(-.4, 16, 0);
                 sleep(100);
-                drive.turn(90, .35);
+                drive.turn(90, .45);
+                sleep(150);
                 drive.moveGyro(.4, 59, 90);
                 lift.release();
                 sleep(100);
-                drive.strafeRightInches(.35, 2.5);
-                sleep(100);
+                drive.strafeRightInches(.3, .25);
+                sleep(200);
                 drive.moveGyro(-.6, 10 + 109, 90);
                 sleep(500);
 
                 //skystone 2
-                drive.moveGyro(.32,8.75, 90);
-                drive.turn(0,.35);
+                drive.moveGyro(.35,11.25, 90);
+                sleep(150);
+                drive.turn(0,.45);
                 sleep(100);
                 drive.moveGyro(.4, 20, 0);
-                lift.grab();
+                lift.srvClaw1.setPosition(1);
+                sleep(200);
                 drive.moveGyro(-.4, 14, 0);
-                drive.turn(90,.35);
-                sleep(100);
+                sleep(150);
+                drive.turn(90,.45);
+                sleep(200);
+                drive.strafeRightInches(.3, 2.25);
+                sleep(150);
                 drive.moveGyro(.4,  10+ 100, 90);
                 lift.release();
                 sleep(100);
@@ -76,33 +84,35 @@ public class redQuarryAuto extends LinearOpMode {
 
                 //skystone 1
                 lift.release();
-                drive.strafeRightInches(.35, .25);
+                drive.strafeRightInches(.325, .2);
                 sleep(200);
                 drive.moveGyro(.4, 42, 0);
                 sleep(250);
                 lift.grab();
                 drive.moveGyro(-.4, 14, 0);
                 sleep(100);
-                drive.turn(90, .35);
+                drive.turn(90, .45);
+                sleep(150);
                 drive.moveGyro(.4, 79, 90);
                 lift.release();
                 sleep(100);
-                drive.strafeRightInches(.2, 2);
-                sleep(100);
+                drive.strafeRightInches(.25, .75);
+                sleep(200);
                 drive.moveGyro(-.6, 11 + 107, 90);
                 sleep(500);
 
                 //skystone 2
                 drive.moveGyro(.32,.1, 90);
-                drive.turn(0,.35);
+                sleep(200);
+                drive.turn(0,.45);
                 sleep(100);
                 drive.moveGyro(.4, 20, 0);
-                lift.grab();
+                lift.srvClaw1.setPosition(1);
                 drive.moveGyro(-.4, 14, 0);
                 sleep(100);
-                drive.turn(90,.35);
+                drive.turn(90,.475);
                 sleep(100);
-                drive.strafeRightInches(.4, 3.5);
+                drive.strafeRightInches(.25, 2.7);
                 sleep(100);
                 drive.moveGyro(.4,  10+ 104, 90);
                 lift.release();
@@ -122,27 +132,28 @@ public class redQuarryAuto extends LinearOpMode {
                 lift.grab();
                 drive.moveGyro(-.4, 14, 0);
                 sleep(100);
-                drive.turn(90, .35);
+                drive.turn(90, .45);
+                sleep(200);
                 drive.moveGyro(.4, 91, 90);
                 lift.release();
                 sleep(100);
-                drive.strafeRightInches(.35, 3.24);
+                drive.strafeRightInches(.3, .25);
                 sleep(200);
                 drive.moveGyro(-.6, 11 + 110, 90);
                 sleep(500);
 
                 //skystone 2
 //
-                drive.turn(0,.35);
+                drive.turn(0,.45);
                 drive.strafeLeftInches(.3,12);
                 sleep(250);
                 drive.moveGyro(.4, 20, 0);
                 lift.srvClaw1.setPosition(1);
                 drive.moveGyro(-.4, 14, 0);
                 sleep(200);
-                drive.turn(90,.15);
+                drive.turn(90,.45);
                 sleep(100);
-                drive.strafeRightInches(.35, 5.24);
+                drive.strafeRightInches(.35, 3.2);
                 sleep(200);
                 drive.moveGyro(.4,  10+ 107, 90);
                 lift.release();

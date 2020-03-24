@@ -18,12 +18,21 @@ public class SnackTeleOp extends SnackOpMode{
     @Override
     public void loop() {
 
-        if (flip){
-            driveTrainPower(gamepad1.left_stick_y, -gamepad1.left_stick_x, -gamepad1.right_stick_x * .6);
+        double k = 1.0;
+        if(gamepad1.left_trigger > .6){
+            k = 0.275;
         }
         else{
-            driveTrainPower(-gamepad1.left_stick_y, gamepad1.left_stick_x, -gamepad1.right_stick_x * .6);
+            k = 1.0;
         }
+        if (flip){
+            driveTrainPower(gamepad1.left_stick_y * k, -gamepad1.left_stick_x * k, -gamepad1.right_stick_x * .6 * k);
+        }
+        else{
+            driveTrainPower(-gamepad1.left_stick_y * k, gamepad1.left_stick_x * k, -gamepad1.right_stick_x * .6 * k);
+        }
+
+
 
         if (gamepad1.right_bumper){
             flip = true;

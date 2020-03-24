@@ -18,6 +18,7 @@ public class ParkAuto extends LinearOpMode{
         drive.init(hardwareMap, telemetry);
         lift.init(hardwareMap, telemetry);
         lift.clawInit();
+        drive.gateRelease();
 
         String parkChoice = null;
 
@@ -47,15 +48,29 @@ public class ParkAuto extends LinearOpMode{
             }
 
             else if (parkChoice.equals("TopToLeft")){
-
+                drive.moveGyro(.4, 17, 0);
+                sleep(350);
+                drive.turn(90, .35);
+                sleep(450);
+                drive.moveGyro(-.4, 44, -90);
+                sleep(250);
+                drive.strafeLeftInches(.35, 7);
             }
 
             else if (parkChoice.equals("BottomToRight")){
-
+                drive.strafeRightInches(.35, 3);
+                sleep(200);
+                drive.moveGyro(-.35, 37, 0);
+                sleep(250);
+                drive.strafeLeftInches(.35, 10);
             }
 
             else if (parkChoice.equals("BottomToLeft")){
-
+                drive.strafeLeftInches(.35, 3);
+                sleep(200);
+                drive.moveGyro(-.35, 37, 0);
+                sleep(250);
+                drive.strafeRightInches(.35, 10);
             }
 
             else{
