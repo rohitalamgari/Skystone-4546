@@ -1,3 +1,7 @@
+# 4546 ViperBots SnakeByte 2019 - 2020 Skystone Software Overview
+This is the repository for 4546 ViperBots SnakeByte during the 2019 - 2020 FTC Skystone season. During the season, our team won the AML Championship (robot performance) and competed in the elimination rounds at the Alamo Regional Championship. We utilized several efficient algorithms and software techniques to maximize our scoring potential and assist alliance partners in the autonomous period (robot moves independently with only pre-programmed instructions) and the driver-controlled period. 
+
+
 ## NOTICE
 
 This repository contains the public FTC SDK for the SKYSTONE (2019-2020) competition season.  
