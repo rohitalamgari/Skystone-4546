@@ -1,6 +1,19 @@
 # 4546 ViperBots SnakeByte 2019 - 2020 Skystone Software Overview
 This is the repository for 4546 ViperBots SnakeByte during the 2019 - 2020 FTC Skystone season. During the season, our team won the AML Championship (robot performance) and competed in the elimination rounds at the Alamo Regional Championship. We utilized several efficient algorithms and software techniques to maximize our scoring potential and assist alliance partners in the autonomous period (robot moves independently with only pre-programmed instructions) and the driver-controlled period. 
 
+<img src="https://user-images.githubusercontent.com/43790515/207968154-f528a7db-4608-440d-9703-f6d683cac71f.png" width="700"/>
+
+\
+\
+\
+In planning our scoring strategy, we realized that we could have our alliance score a lot of points by having our robot perform a niche role - supporting our alliance partner in the autonomous period and deliver stones to our alliance partner quickly in the driver-controlled period. We planned an autonomous pathing that would minimize the number of movements we had to make and still be compatible with alliance partners. We primarily focused on coordinating an autonomous pathing with other teams to score more points (place skystones on the foundation). We also had a variety of other autonomous paths to score objectives that other teams might not be able to. These were our autonomous pathings:
+\
+\
+<img src="https://user-images.githubusercontent.com/43790515/207970542-60546535-b46e-4066-9d6b-8790b42c9844.PNG" width="400"/>
+
+
+
+
 
 ## NOTICE
 
