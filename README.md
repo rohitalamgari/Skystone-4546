@@ -32,8 +32,7 @@ We knew that to turn accurately, we would have to use our gyro. Due to its consi
 
 <img src="https://user-images.githubusercontent.com/43790515/207979994-180b68c3-2d00-42fc-8dea-172aefdedf3e.PNG" width="800"/>
 
-
-
+<p>&nbsp;&nbsp;</p>
 
 ## NOTICE
 
