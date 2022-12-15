@@ -11,6 +11,26 @@ In planning our scoring strategy, we realized that we could have our alliance sc
 \
 <img src="https://user-images.githubusercontent.com/43790515/207970542-60546535-b46e-4066-9d6b-8790b42c9844.PNG" width="400"/>
 
+The paths on the top half pulled the foundation into the building site, waited for the alliance partner to finish their objectives, and parked. 
+
+The paths on the bottom half detected the skystone positions, picked up the first skystone, delivered it to the building zone, came back to the loading zone, picked up the second skystone, delivered it to the building zone, and parked.
+\
+\
+\
+In our plan for autonomous pathing, we wanted to score the maximum number of points in the shortest amount of time possible. To accomplish this goal, we used a custom Vuforia bitmap algorithm. This algorithm was used to determine the skystone positions in the autonomous period. 
+
+A bitmap is a map of pixels that stores the red, green, and blue color values of each pixel in an image. We would then create a threshold of color values to find pixels that fulfill the requirements for the threshold. To use the camera on the phone, we used a library of classes called Vuforia to take an image of the quarry. We then converted the image to a bitmap, so that we could access the RGB color values of the pixels. 
+
+To find the RGB color values of black pixels (because that is the primary color of the skystones), we used GRIP. GRIP is a graphical user interface that allows us to process images through various filters such as RGB values, HSV, filter lines, and more. We tested the images through the RGB filter and found that the best range for black pixels was from 0-35. We would use this information when writing our bitmap algorithm. To determine the position of the skystones, we found the median x coordinate of all the black pixels (the pixels that passed through our RGB filter).
+
+<img src="https://user-images.githubusercontent.com/43790515/207975563-3368b5da-2a48-453b-aeb8-cb6288b80674.PNG" width="1000"/>
+
+\
+\
+\
+We knew that to turn accurately, we would have to use our gyro. Due to its consistency, gyro is an accurate measure that we can utilize to make near perfect movements. For our turning algorithm, we implemented PID control algorithms. We used just the P (proportional) term because it was working quickly and accurately in the autonomous. Error is defined as our goal angle minus our current angle. In our P turn, as our error decreases, our power output to the motor decreases because it will be proportional to the error. This ensures that we never overshoot, and if we do, we tell the robot to turn back to the desired angle.
+
+<img src="https://user-images.githubusercontent.com/43790515/207979994-180b68c3-2d00-42fc-8dea-172aefdedf3e.PNG" width="800"/>
 
 
 
